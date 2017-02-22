@@ -2,4 +2,7 @@
 
 This is the repository for Travis Perkins Job Manager API.
 
-**TODO**
+**Package**:
+```
+mvn clean package
+```
