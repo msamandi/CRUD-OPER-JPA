@@ -12,8 +12,10 @@ node {
         def api_image_name = "andigital/job-manager-api:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         def api_app
 
-        stage ('Build job-manager-api code') {
-            sh 'mvn clean package'
+        docker.image("maven:3.3.9-jdk-8-alpine").inside() {
+            stage ('Build job-manager-api code') {
+                sh 'mvn clean package'
+            }
         }
 
         stage ('Build API image') {
