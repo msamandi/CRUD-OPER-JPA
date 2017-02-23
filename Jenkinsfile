@@ -42,5 +42,13 @@ node {
         }
 
         throw error
+    } finally {
+        try {
+            step([$class: 'GitHubCommitStatusSetter', statusResultSource: [$class: 'ConditionalStatusResultSource', results: []]])
+        } catch (error2) {
+            // Ignore
+        }
+
+
     }
 }
