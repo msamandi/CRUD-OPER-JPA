@@ -1,5 +1,7 @@
 FROM java:openjdk-8-jre-alpine
 
+RUN mkdir -p /var/app/job-manager-api
+
 WORKDIR /var/app/job-manager-api
 
 ADD target/jobmanager-api-1.0.jar .
