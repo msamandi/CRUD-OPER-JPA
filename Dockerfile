@@ -4,8 +4,8 @@ RUN mkdir -p /var/app/job-manager-api
 
 WORKDIR /var/app/job-manager-api
 
-ADD target/jobmanager-api-1.0.jar .
-ADD config/application.properties .
+ADD target/jobmanager-api-1.0.jar ./
+ADD config/application.properties ./
 
 EXPOSE 8080
 
