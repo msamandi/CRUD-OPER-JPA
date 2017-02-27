@@ -11,11 +11,59 @@ public class Job {
 
     private List<JobSpec> jobSpecs;
 
-    List<Invoice> invoices;
+    private List<Invoice> invoices;
 
-    Date created;
+    private Date created;
 
-    TPContractor contractor;
+    private TPContractor contractor;
 
-    TPClient client;
+    private TPClient client;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<JobSpec> getJobSpecs() {
+        return jobSpecs;
+    }
+
+    public void setJobSpecs(List<JobSpec> jobSpecs) {
+        this.jobSpecs = jobSpecs;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public TPContractor getContractor() {
+        return contractor;
+    }
+
+    public void setContractor(TPContractor contractor) {
+        this.contractor = contractor;
+    }
+
+    public TPClient getClient() {
+        return client;
+    }
+
+    public void setClient(TPClient client) {
+        this.client = client;
+    }
 }

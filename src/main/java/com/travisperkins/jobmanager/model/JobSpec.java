@@ -11,11 +11,59 @@ public class JobSpec {
 
     private List<Item> items;
 
-    Date created;
+    private Date created;
 
-    boolean isQuoteGenerated;
+    private boolean isQuoteGenerated;
 
-    Date quoteCreated;
+    private Date quoteCreated;
 
-    Date updated;
+    private Date updated;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public boolean isQuoteGenerated() {
+        return isQuoteGenerated;
+    }
+
+    public void setQuoteGenerated(boolean quoteGenerated) {
+        isQuoteGenerated = quoteGenerated;
+    }
+
+    public Date getQuoteCreated() {
+        return quoteCreated;
+    }
+
+    public void setQuoteCreated(Date quoteCreated) {
+        this.quoteCreated = quoteCreated;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
 }

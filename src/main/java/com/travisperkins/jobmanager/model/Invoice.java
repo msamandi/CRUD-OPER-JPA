@@ -9,11 +9,51 @@ import java.util.List;
 public class Invoice {
     private int id;
 
-    private int jobId;
-
     private List<JobSpec> jobSpecs;
 
-    Date created;
+    private Date created;
 
-    Price invoiceValue;
+    private Price invoiceValue;
+
+    private Job job;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<JobSpec> getJobSpecs() {
+        return jobSpecs;
+    }
+
+    public void setJobSpecs(List<JobSpec> jobSpecs) {
+        this.jobSpecs = jobSpecs;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Price getInvoiceValue() {
+        return invoiceValue;
+    }
+
+    public void setInvoiceValue(Price invoiceValue) {
+        this.invoiceValue = invoiceValue;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
 }
