@@ -6,6 +6,7 @@ WORKDIR /var/app/job-manager-api
 
 ADD target/jobmanager-api-1.0.jar ./
 ADD config/application.properties ./
+ADD database/jobmanagerAPI.mv.db ./jobmanagerAPI.mv.db
 
 EXPOSE 8080
 

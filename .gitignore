@@ -1,6 +1,7 @@
 # IntelliJ specific
 .idea
 *.iml
+*.mv.db
 
 # Java specific
 target/
