@@ -1,8 +1,7 @@
 # IntelliJ specific
 .idea
 *.iml
-*.mv.db
-*.trace.db
+*.db
 
 # Java specific
 target/

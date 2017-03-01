@@ -19,8 +19,6 @@ public class Job {
 
     private ArrayList<JobSpec> jobSpecs;
 
-    private ArrayList<Invoice> invoices;
-
     private Date created;
 
     private Long contractor;
@@ -41,14 +39,6 @@ public class Job {
 
     public void setJobSpecs(ArrayList<JobSpec> jobSpecs) {
         this.jobSpecs = jobSpecs;
-    }
-
-    public List<Invoice> getInvoices() {
-        return invoices;
-    }
-
-    public void setInvoices(ArrayList<Invoice> invoices) {
-        this.invoices = invoices;
     }
 
     public Date getCreated() {
