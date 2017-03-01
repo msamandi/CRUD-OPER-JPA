@@ -1,9 +1,6 @@
 package com.travisperkins.jobmanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,17 +9,23 @@ import java.util.List;
  * Created by sverma on 27/02/2017.
  */
 @Entity
+@Table(name = "JOB")
 public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "JOBSPECS")
     private ArrayList<JobSpec> jobSpecs;
 
+    @Column(name = "CREATED")
     private Date created;
 
+    @Column(name = "CONTRACTOR")
     private Long contractor;
 
+    @Column(name = "CLIENT")
     private Long client;
 
     public Long getId() {

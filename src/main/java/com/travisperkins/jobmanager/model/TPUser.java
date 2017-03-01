@@ -1,19 +1,22 @@
 package com.travisperkins.jobmanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by sverma on 27/02/2017.
  */
 @Entity
+@Table(name = "TPUSER")
 public abstract class TPUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "TYPE")
+    private UserType type;
+
+    @Column(name = "USERINFO")
     private Long userInfo;
 
     public abstract UserType getType();
@@ -24,5 +27,9 @@ public abstract class TPUser {
 
     public void setUserInfo(Long userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
     }
 }

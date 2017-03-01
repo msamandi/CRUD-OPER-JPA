@@ -1,9 +1,6 @@
 package com.travisperkins.jobmanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,19 +9,26 @@ import java.util.List;
  * Created by sverma on 27/02/2017.
  */
 @Entity
+@Table(name = "JOBSPEC")
 public class JobSpec {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "ITEMS")
     private ArrayList<Item> items;
 
+    @Column(name = "CREATED")
     private Date created;
 
+    @Column(name = "ISQUOTEGENERATED")
     private boolean isQuoteGenerated;
 
+    @Column(name = "QUOTECREATED")
     private Date quoteCreated;
 
+    @Column(name = "UPDATED")
     private Date updated;
 
     public Long getId() {

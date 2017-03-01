@@ -1,21 +1,22 @@
 package com.travisperkins.jobmanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by sverma on 27/02/2017.
  */
 @Entity
+@Table(name = "ITEM")
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "PRODUCT")
     private Long product;
 
+    @Column(name = "QUANTITY")
     private int quantity;
 
     public Long getProduct() {

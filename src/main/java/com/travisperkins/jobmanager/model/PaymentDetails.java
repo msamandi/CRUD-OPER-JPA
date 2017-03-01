@@ -1,23 +1,25 @@
 package com.travisperkins.jobmanager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by sverma on 27/02/2017.
  */
 @Entity
+@Table(name = "PAYMENT_DETAILS")
 public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "SORTCODE")
     private String sortCode;
 
+    @Column(name = "ACCOUNT_NUMBER")
     private String accountNumber;
 
+    @Column(name = "ACCOUNT_HOLDER_NAME")
     private String accountHolderName;
 
     public String getSortCode() {
