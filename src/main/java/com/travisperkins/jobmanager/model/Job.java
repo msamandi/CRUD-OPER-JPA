@@ -28,6 +28,9 @@ public class Job {
     @Column(name = "CLIENT")
     private Long client;
 
+    @Column(name = "NAME")
+    private String name;
+
     public Long getId() {
         return id;
     }
@@ -66,5 +69,13 @@ public class Job {
 
     public void setClient(Long client) {
         this.client = client;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
