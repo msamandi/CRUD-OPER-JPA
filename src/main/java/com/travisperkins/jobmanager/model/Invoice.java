@@ -64,4 +64,15 @@ public class Invoice {
     public void setJob(Long job) {
         this.job = job;
     }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "id=" + id +
+                ", jobSpecs=" + jobSpecs +
+                ", created=" + created +
+                ", invoiceValue=" + invoiceValue +
+                ", job=" + job +
+                '}';
+    }
 }

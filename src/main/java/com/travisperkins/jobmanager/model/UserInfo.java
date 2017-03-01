@@ -86,4 +86,17 @@ public class UserInfo {
     public void setCompanyDetails(Long companyDetails) {
         this.companyDetails = companyDetails;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", paymentDetails=" + paymentDetails +
+                ", companyDetails=" + companyDetails +
+                '}';
+    }
 }

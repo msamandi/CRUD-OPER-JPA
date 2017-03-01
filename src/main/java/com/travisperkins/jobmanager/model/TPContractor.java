@@ -9,4 +9,5 @@ public class TPContractor extends TPUser {
     public UserType getType() {
         return UserType.USER_TYPE_CONTRACTOR;
     }
+
 }

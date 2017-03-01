@@ -40,4 +40,13 @@ public class Price {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "id=" + id +
+                ", currency='" + currency + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

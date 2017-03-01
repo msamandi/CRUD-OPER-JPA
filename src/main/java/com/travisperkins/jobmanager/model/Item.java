@@ -13,17 +13,22 @@ public class Item {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "PRODUCT")
-    private Long product;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_ID")
+    private Product product;
 
     @Column(name = "QUANTITY")
     private int quantity;
 
-    public Long getProduct() {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "JOBSPEC_ID")
+    private JobSpec jobSpec;
+
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(Long product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
@@ -41,5 +46,15 @@ public class Item {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                ", jobSpec=" + jobSpec +
+                '}';
     }
 }

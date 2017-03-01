@@ -54,4 +54,14 @@ public class CompanyDetails {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "CompanyDetails{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", vat='" + vat + '\'' +
+                '}';
+    }
 }

@@ -53,4 +53,14 @@ public class PaymentDetails {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "PaymentDetails{" +
+                "id=" + id +
+                ", sortCode='" + sortCode + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", accountHolderName='" + accountHolderName + '\'' +
+                '}';
+    }
 }

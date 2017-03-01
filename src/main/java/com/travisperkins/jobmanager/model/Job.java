@@ -16,8 +16,8 @@ public class Job {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "JOBSPECS")
-    private ArrayList<JobSpec> jobSpecs;
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<JobSpec> jobSpecs;
 
     @Column(name = "CREATED")
     private Date created;
@@ -77,5 +77,17 @@ public class Job {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", jobSpecs=" + jobSpecs +
+                ", created=" + created +
+                ", contractor=" + contractor +
+                ", client=" + client +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

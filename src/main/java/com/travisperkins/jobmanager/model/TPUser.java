@@ -32,4 +32,13 @@ public abstract class TPUser {
     public void setType(UserType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "TPUser{" +
+                "id=" + id +
+                ", type=" + type +
+                ", userInfo=" + userInfo +
+                '}';
+    }
 }

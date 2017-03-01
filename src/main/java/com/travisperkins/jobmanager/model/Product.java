@@ -2,6 +2,8 @@ package com.travisperkins.jobmanager.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sverma on 27/02/2017.
@@ -25,6 +27,13 @@ public class Product {
 
     @Column(name = "PRICE")
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Item> items;
+
+    public Product() {
+        items = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
@@ -64,5 +73,13 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

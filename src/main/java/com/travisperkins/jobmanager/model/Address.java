@@ -87,4 +87,17 @@ public class Address {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", line1='" + line1 + '\'' +
+                ", line2='" + line2 + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", country='" + country + '\'' +
+                ", county='" + county + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
