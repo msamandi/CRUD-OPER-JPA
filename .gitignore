@@ -2,6 +2,7 @@
 .idea
 *.iml
 *.mv.db
+*.trace.db
 
 # Java specific
 target/

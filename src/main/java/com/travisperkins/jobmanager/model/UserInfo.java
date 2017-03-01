@@ -1,28 +1,36 @@
 package com.travisperkins.jobmanager.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by sverma on 27/02/2017.
  */
+@Entity
 public class UserInfo {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String name;
 
-    private Address address;
+    private Long address;
 
     private String phone;
 
     private String email;
 
-    private PaymentDetails paymentDetails;
+    private Long paymentDetails;
 
-    private CompanyDetails companyDetails;
+    private Long companyDetails;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,11 +42,11 @@ public class UserInfo {
         this.name = name;
     }
 
-    public Address getAddress() {
+    public Long getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(Long address) {
         this.address = address;
     }
 
@@ -58,19 +66,19 @@ public class UserInfo {
         this.email = email;
     }
 
-    public PaymentDetails getPaymentDetails() {
+    public Long getPaymentDetails() {
         return paymentDetails;
     }
 
-    public void setPaymentDetails(PaymentDetails paymentDetails) {
+    public void setPaymentDetails(Long paymentDetails) {
         this.paymentDetails = paymentDetails;
     }
 
-    public CompanyDetails getCompanyDetails() {
+    public Long getCompanyDetails() {
         return companyDetails;
     }
 
-    public void setCompanyDetails(CompanyDetails companyDetails) {
+    public void setCompanyDetails(Long companyDetails) {
         this.companyDetails = companyDetails;
     }
 }

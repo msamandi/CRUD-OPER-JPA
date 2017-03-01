@@ -6,5 +6,5 @@ package com.travisperkins.jobmanager.model;
 public enum UserType {
     USER_TYPE_CLIENT,
 
-    USER_TYPE_CONTRACTOR;
+    USER_TYPE_CONTRACTOR
 }

@@ -1,15 +1,23 @@
 package com.travisperkins.jobmanager.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by sverma on 27/02/2017.
  */
+@Entity
 public class JobSpec {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private List<Item> items;
+    private ArrayList<Item> items;
 
     private Date created;
 
@@ -19,11 +27,11 @@ public class JobSpec {
 
     private Date updated;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -31,7 +39,7 @@ public class JobSpec {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 

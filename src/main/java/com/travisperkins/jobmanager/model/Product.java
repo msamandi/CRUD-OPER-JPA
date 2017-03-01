@@ -1,10 +1,19 @@
 package com.travisperkins.jobmanager.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.math.BigDecimal;
+
 /**
  * Created by sverma on 27/02/2017.
  */
+@Entity
 public class Product {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String type;
 
@@ -12,13 +21,13 @@ public class Product {
 
     private String description;
 
-    private Price price;
+    private BigDecimal price;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -46,11 +55,11 @@ public class Product {
         this.description = description;
     }
 
-    public Price getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Price price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

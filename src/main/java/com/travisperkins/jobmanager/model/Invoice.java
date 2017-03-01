@@ -1,27 +1,35 @@
 package com.travisperkins.jobmanager.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by sverma on 27/02/2017.
  */
+@Entity
 public class Invoice {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private List<JobSpec> jobSpecs;
+    private ArrayList<JobSpec> jobSpecs;
 
     private Date created;
 
-    private Price invoiceValue;
+    private Double invoiceValue;
 
-    private Job job;
+    private Long job;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -29,7 +37,7 @@ public class Invoice {
         return jobSpecs;
     }
 
-    public void setJobSpecs(List<JobSpec> jobSpecs) {
+    public void setJobSpecs(ArrayList<JobSpec> jobSpecs) {
         this.jobSpecs = jobSpecs;
     }
 
@@ -41,19 +49,19 @@ public class Invoice {
         this.created = created;
     }
 
-    public Price getInvoiceValue() {
+    public Double getInvoiceValue() {
         return invoiceValue;
     }
 
-    public void setInvoiceValue(Price invoiceValue) {
+    public void setInvoiceValue(Double invoiceValue) {
         this.invoiceValue = invoiceValue;
     }
 
-    public Job getJob() {
+    public Long getJob() {
         return job;
     }
 
-    public void setJob(Job job) {
+    public void setJob(Long job) {
         this.job = job;
     }
 }

@@ -1,29 +1,37 @@
 package com.travisperkins.jobmanager.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by sverma on 27/02/2017.
  */
+@Entity
 public class Job {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private List<JobSpec> jobSpecs;
+    private ArrayList<JobSpec> jobSpecs;
 
-    private List<Invoice> invoices;
+    private ArrayList<Invoice> invoices;
 
     private Date created;
 
-    private TPContractor contractor;
+    private Long contractor;
 
-    private TPClient client;
+    private Long client;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -31,7 +39,7 @@ public class Job {
         return jobSpecs;
     }
 
-    public void setJobSpecs(List<JobSpec> jobSpecs) {
+    public void setJobSpecs(ArrayList<JobSpec> jobSpecs) {
         this.jobSpecs = jobSpecs;
     }
 
@@ -39,7 +47,7 @@ public class Job {
         return invoices;
     }
 
-    public void setInvoices(List<Invoice> invoices) {
+    public void setInvoices(ArrayList<Invoice> invoices) {
         this.invoices = invoices;
     }
 
@@ -51,19 +59,19 @@ public class Job {
         this.created = created;
     }
 
-    public TPContractor getContractor() {
+    public Long getContractor() {
         return contractor;
     }
 
-    public void setContractor(TPContractor contractor) {
+    public void setContractor(Long contractor) {
         this.contractor = contractor;
     }
 
-    public TPClient getClient() {
+    public Long getClient() {
         return client;
     }
 
-    public void setClient(TPClient client) {
+    public void setClient(Long client) {
         this.client = client;
     }
 }
