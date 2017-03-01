@@ -14,11 +14,11 @@ public class Product {
     @Column(name = "ID")
     private Long id;
 
+    @Column(name = "CATEGORY")
+    private String category;
+
     @Column(name = "TYPE")
     private String type;
-
-    @Column(name = "NAME")
-    private String name;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -34,20 +34,20 @@ public class Product {
         this.id = id;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {

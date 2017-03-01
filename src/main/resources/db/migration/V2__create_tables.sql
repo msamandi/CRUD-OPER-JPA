@@ -1,8 +1,8 @@
 
 CREATE TABLE IF NOT EXISTS PRODUCT (
 	ID LONG NOT NULL PRIMARY KEY,
-	TYPE VARCHAR(100),
-	NAME VARCHAR(500),
+	CATEGORY VARCHAR(100),
+	TYPE VARCHAR(500),
 	DESCRIPTION VARCHAR(1000),
 	PRICE DOUBLE
 );
@@ -106,7 +106,7 @@ ALTER TABLE JOB
     ADD FOREIGN KEY (CONTRACTOR)
     REFERENCES public.TPUSER(ID);
 
-insert into PRODUCT (ID, TYPE, NAME, DESCRIPTION, PRICE) values
+insert into PRODUCT (ID, CATEGORY, TYPE, DESCRIPTION, PRICE) values
     (2001200, 'Labour','General', 'Labour', 15.00),
     (2001201, 'Labour','Special', 'Specialised Labour', 17.00),
     (2001242, 'Materials','Paint', 'Magnolia Dulux Paint', 25.2),
