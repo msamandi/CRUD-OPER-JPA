@@ -1,5 +1,7 @@
 package com.travisperkins.jobmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,15 +22,18 @@ public class JobSpec {
     private List<Item> items;
 
     @Column(name = "CREATED")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date created;
 
     @Column(name = "ISQUOTEGENERATED")
     private boolean isQuoteGenerated;
 
     @Column(name = "QUOTECREATED")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date quoteCreated;
 
     @Column(name = "UPDATED")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updated;
 
     @ManyToOne(fetch = FetchType.LAZY)

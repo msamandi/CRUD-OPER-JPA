@@ -1,5 +1,7 @@
 package com.travisperkins.jobmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class Job {
     private List<JobSpec> jobSpecs;
 
     @Column(name = "CREATED")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date created;
 
     @OneToOne (cascade=CascadeType.ALL)
