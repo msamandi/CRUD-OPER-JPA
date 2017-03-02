@@ -98,7 +98,7 @@ public class JobSpec {
         this.paymentTerms = paymentTerms;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "JobSpec{" +
                 "id=" + id +
@@ -110,5 +110,5 @@ public class JobSpec {
                 ", job=" + job +
                 ", paymentTerms='" + paymentTerms + '\'' +
                 '}';
-    }
+    }*/
 }

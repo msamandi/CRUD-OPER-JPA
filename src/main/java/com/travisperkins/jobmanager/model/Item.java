@@ -33,6 +33,19 @@ public class Item {
     @JoinColumn(name = "JOBSPEC_ID")
     private JobSpec jobSpec;
 
+    public Item(Item item) {
+        this.quantity = item.getQuantity();
+        this.price = item.getPrice();
+        this.category = item.getCategory();
+        this.type = item.getType();
+        this.description = item.getDescription();
+        this.id = item.getId();
+    }
+
+    public Item() {
+    }
+
+
     public int getQuantity() {
         return quantity;
     }
