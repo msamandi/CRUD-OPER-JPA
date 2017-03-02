@@ -54,12 +54,12 @@ public class JobController {
         return jobRepository.saveAndFlush(job);
     }
 
-    @RequestMapping(value = "jobs/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "job/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable Long id) {
         jobRepository.delete(id);
     }
 
-    @RequestMapping(value = "jobs/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "job/{id}", method = RequestMethod.PUT)
     public Job update(@PathVariable Long id, @RequestBody Job job) {
         Job existing = jobRepository.findOne(id);
         BeanUtils.copyProperties(job, existing);
