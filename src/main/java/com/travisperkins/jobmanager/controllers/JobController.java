@@ -1,10 +1,15 @@
 package com.travisperkins.jobmanager.controllers;
 
 import com.travisperkins.jobmanager.model.*;
-import com.travisperkins.jobmanager.repository.*;
+import com.travisperkins.jobmanager.repository.ItemRepository;
+import com.travisperkins.jobmanager.repository.JobRepository;
+import com.travisperkins.jobmanager.repository.TPUserRepository;
+import com.travisperkins.jobmanager.repository.UserInfoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by imunarriz on 23/02/2017.
@@ -62,7 +67,9 @@ public class JobController {
     @RequestMapping(value = "job/{id}", method = RequestMethod.PUT)
     public Job update(@PathVariable Long id, @RequestBody Job job) {
         Job existing = jobRepository.findOne(id);
+        List<Item> newItems = job.getJobSpecs().get(0).getItems();
         BeanUtils.copyProperties(job, existing);
+        existing.getJobSpecs().get(0).setItems(newItems);
         return jobRepository.saveAndFlush(existing);
     }
 }
