@@ -21,9 +21,6 @@ public class JobController {
     private ItemRepository itemRepository;
 
     @Autowired
-    private JobSpecRepository jobSpecRepository;
-
-    @Autowired
     private TPUserRepository tpUserRepository;
 
     @Autowired
@@ -37,11 +34,6 @@ public class JobController {
     @RequestMapping(value = "item/{id}", method = RequestMethod.GET)
     public Item getItem(@PathVariable Long id) {
         return itemRepository.findOne(id);
-    }
-
-    @RequestMapping(value = "jobspec/{id}", method = RequestMethod.GET)
-    public JobSpec getJobSpec(@PathVariable Long id) {
-        return jobSpecRepository.findOne(id);
     }
 
     @RequestMapping(value = "tpuser/{id}", method = RequestMethod.GET)
