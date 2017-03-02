@@ -16,17 +16,19 @@ public class Job {
     @Column(name = "ID")
     private Long id;
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JobSpec> jobSpecs;
 
     @Column(name = "CREATED")
     private Date created;
 
-    @Column(name = "CONTRACTOR")
-    private Long contractor;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="CONTRACTOR_ID", unique= true)
+    private TPContractor contractor;
 
-    @Column(name = "CLIENT")
-    private Long client;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="CLIENT_ID", unique= true)
+    private TPClient client;
 
     @Column(name = "NAME")
     private String name;
@@ -55,19 +57,19 @@ public class Job {
         this.created = created;
     }
 
-    public Long getContractor() {
+    public TPContractor getContractor() {
         return contractor;
     }
 
-    public void setContractor(Long contractor) {
+    public void setContractor(TPContractor contractor) {
         this.contractor = contractor;
     }
 
-    public Long getClient() {
+    public TPClient getClient() {
         return client;
     }
 
-    public void setClient(Long client) {
+    public void setClient(TPClient client) {
         this.client = client;
     }
 

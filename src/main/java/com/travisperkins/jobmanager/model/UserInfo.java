@@ -16,8 +16,9 @@ public class UserInfo {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "ADDRESS")
-    private Long address;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="ADDRESS_ID", unique= true)
+    private Address address;
 
     @Column(name = "PHONE")
     private String phone;
@@ -25,11 +26,13 @@ public class UserInfo {
     @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "PAYMENT_DETAILS")
-    private Long paymentDetails;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="PAYMENT_DETAILS_ID", unique= true)
+    private PaymentDetails paymentDetails;
 
-    @Column(name = "COMPANY_DETAILS")
-    private Long companyDetails;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="COMPANY_DETAILS_ID", unique= true)
+    private CompanyDetails companyDetails;
 
     public Long getId() {
         return id;
@@ -47,11 +50,11 @@ public class UserInfo {
         this.name = name;
     }
 
-    public Long getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Long address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
@@ -71,19 +74,19 @@ public class UserInfo {
         this.email = email;
     }
 
-    public Long getPaymentDetails() {
+    public PaymentDetails getPaymentDetails() {
         return paymentDetails;
     }
 
-    public void setPaymentDetails(Long paymentDetails) {
+    public void setPaymentDetails(PaymentDetails paymentDetails) {
         this.paymentDetails = paymentDetails;
     }
 
-    public Long getCompanyDetails() {
+    public CompanyDetails getCompanyDetails() {
         return companyDetails;
     }
 
-    public void setCompanyDetails(Long companyDetails) {
+    public void setCompanyDetails(CompanyDetails companyDetails) {
         this.companyDetails = companyDetails;
     }
 

@@ -17,8 +17,9 @@ public class CompanyDetails {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "ADDRESS")
-    private Long address;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="ADDRESS_ID", unique= true)
+    private Address address;
 
     @Column(name = "VAT")
     private String vat;
@@ -31,11 +32,11 @@ public class CompanyDetails {
         this.name = name;
     }
 
-    public Long getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Long address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

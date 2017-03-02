@@ -6,38 +6,40 @@ import javax.persistence.*;
  * Created by sverma on 27/02/2017.
  */
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TYPE")
 @Table(name = "TPUSER")
-public abstract class TPUser {
+public class TPUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "TYPE")
-    private UserType type;
+    @OneToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="USERINFO_ID", unique= true)
+    private UserInfo userInfo;
 
-    @Column(name = "USERINFO")
-    private Long userInfo;
+    public Long getId() {
+        return id;
+    }
 
-    public abstract UserType getType();
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Long getUserInfo() {
+    public UserInfo getUserInfo() {
         return userInfo;
     }
 
-    public void setUserInfo(Long userInfo) {
+    public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
     }
 
-    public void setType(UserType type) {
-        this.type = type;
-    }
 
     @Override
     public String toString() {
         return "TPUser{" +
                 "id=" + id +
-                ", type=" + type +
                 ", userInfo=" + userInfo +
                 '}';
     }

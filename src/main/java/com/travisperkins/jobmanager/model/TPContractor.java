@@ -1,13 +1,13 @@
 package com.travisperkins.jobmanager.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 /**
  * Created by sverma on 27/02/2017.
  */
+@Entity
+@DiscriminatorValue(value = "TPContractor")
 public class TPContractor extends TPUser {
-
-    @Override
-    public UserType getType() {
-        return UserType.USER_TYPE_CONTRACTOR;
-    }
 
 }

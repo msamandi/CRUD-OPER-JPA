@@ -1,9 +1,7 @@
 package com.travisperkins.jobmanager.controllers;
 
-import com.travisperkins.jobmanager.model.Item;
-import com.travisperkins.jobmanager.model.Job;
-import com.travisperkins.jobmanager.repository.ItemRepository;
-import com.travisperkins.jobmanager.repository.JobRepository;
+import com.travisperkins.jobmanager.model.*;
+import com.travisperkins.jobmanager.repository.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +20,38 @@ public class JobController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @RequestMapping(value = "jobs/{id}", method = RequestMethod.GET)
-    public Item getJob(@PathVariable Long id) {
+    @Autowired
+    private JobSpecRepository jobSpecRepository;
+
+    @Autowired
+    private TPUserRepository tpUserRepository;
+
+    @Autowired
+    private UserInfoRepository userInfoRepository;
+
+    @RequestMapping(value = "job/{id}", method = RequestMethod.GET)
+    public Job getJob(@PathVariable Long id) {
+        return jobRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "item/{id}", method = RequestMethod.GET)
+    public Item getItem(@PathVariable Long id) {
         return itemRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "jobspec/{id}", method = RequestMethod.GET)
+    public JobSpec getJobSpec(@PathVariable Long id) {
+        return jobSpecRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "tpuser/{id}", method = RequestMethod.GET)
+    public TPUser getTPUser(@PathVariable Long id) {
+        return tpUserRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "userinfo/{id}", method = RequestMethod.GET)
+    public UserInfo getUserInfo(@PathVariable Long id) {
+        return userInfoRepository.findOne(id);
     }
 
     @RequestMapping(value = "job", method = RequestMethod.POST)

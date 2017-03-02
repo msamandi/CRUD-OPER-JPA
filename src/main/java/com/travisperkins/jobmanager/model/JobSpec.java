@@ -16,7 +16,7 @@ public class JobSpec {
     @Column(name = "ID")
     private Long id;
 
-    @OneToMany(mappedBy = "jobSpec", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "jobSpec", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Item> items;
 
     @Column(name = "CREATED")
@@ -31,9 +31,12 @@ public class JobSpec {
     @Column(name = "UPDATED")
     private Date updated;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "JOB_ID")
     private Job job;
+
+    @Column(name = "PAYMENT_TERMS")
+    private String paymentTerms;
 
     public Long getId() {
         return id;
@@ -83,12 +86,12 @@ public class JobSpec {
         this.updated = updated;
     }
 
-    public Job getJob() {
-        return job;
+    public String getPaymentTerms() {
+        return paymentTerms;
     }
 
-    public void setJob(Job job) {
-        this.job = job;
+    public void setPaymentTerms(String paymentTerms) {
+        this.paymentTerms = paymentTerms;
     }
 
     @Override
@@ -101,6 +104,7 @@ public class JobSpec {
                 ", quoteCreated=" + quoteCreated +
                 ", updated=" + updated +
                 ", job=" + job +
+                ", paymentTerms='" + paymentTerms + '\'' +
                 '}';
     }
 }
