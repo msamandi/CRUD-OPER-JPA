@@ -1,6 +1,7 @@
 package com.travisperkins.jobmanager.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by sverma on 27/02/2017.
@@ -13,9 +14,17 @@ public class Item {
     @Column(name = "ID")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @Column(name = "CATEGORY")
+    private String category;
+
+    @Column(name = "TYPE")
+    private String type;
+
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    @Column(name = "PRICE")
+    private BigDecimal price;
 
     @Column(name = "QUANTITY")
     private int quantity;
@@ -23,14 +32,6 @@ public class Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "JOBSPEC_ID")
     private JobSpec jobSpec;
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -48,11 +49,47 @@ public class Item {
         this.id = id;
     }
 
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", product=" + product +
+                ", category='" + category + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
                 ", quantity=" + quantity +
                 ", jobSpec=" + jobSpec +
                 '}';

@@ -25,8 +25,8 @@ public class Quote {
         this.type = type;
     }
 
-    private String name ;
-private String type ;
-private String description ;
+    private String name;
+    private String type;
+    private String description;
 
 }

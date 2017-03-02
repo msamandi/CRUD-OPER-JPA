@@ -1,13 +1,3 @@
-
-CREATE TABLE IF NOT EXISTS PRODUCT (
-	ID LONG NOT NULL PRIMARY KEY,
-	CATEGORY VARCHAR(100),
-	TYPE VARCHAR(500),
-	DESCRIPTION VARCHAR(1000),
-	PRICE DOUBLE
-);
-
-
 CREATE TABLE IF NOT EXISTS ADDRESS (
     ID LONG NOT NULL PRIMARY KEY,
     LINE1 VARCHAR(100),
@@ -101,41 +91,16 @@ ALTER TABLE JOBSPEC
 CREATE TABLE IF NOT EXISTS ITEM (
     ID LONG NOT NULL PRIMARY KEY,
     QUANTITY INTEGER,
-    PRODUCT_ID LONG,
-    JOBSPEC_ID LONG
+    JOBSPEC_ID LONG,
+    CATEGORY VARCHAR(100),
+    TYPE VARCHAR(500),
+    DESCRIPTION VARCHAR(1000),
+    PRICE DOUBLE
 );
-
-ALTER TABLE ITEM
-    ADD FOREIGN KEY (PRODUCT_ID)
-    REFERENCES public.PRODUCT(ID);
 
 ALTER TABLE ITEM
 ADD FOREIGN KEY (JOBSPEC_ID)
 REFERENCES public.JOBSPEC(ID);
-
-
-
-
-insert into PRODUCT (ID, CATEGORY, TYPE, DESCRIPTION, PRICE) values
-    (2001200, 'Labour','General', 'Labour', 15.00),
-    (2001201, 'Labour','Special', 'Specialised Labour', 17.00),
-    (2001242, 'Materials','Paint', 'Magnolia Dulux Paint', 25.2),
-    (2001255, 'Parts','Sink', 'Kitchen Sink', 100),
-    (2001250, 'Parts','Angles', 'Simpson Light Duty Angle Bracket 50mm x 50mm', 1.75),
-    (2001245, 'Other','Food', 'Food when working on site', 9.5),
-    (2001287, 'Parts','Lighting', '4Trade Gu10 5W LED', 5.99),
-    (2001297, 'Parts','Shower', 'Mira Excel Shower EV Valve & Kit All Chrome', 288.5),
-    (2001298, 'Parts','Shower', 'Novellini Cu1407011 30 Custom Shower Tray White 1400mm x 700mm', 343.45),
-    (2001202, 'Parts','Shower', 'iflo ABS Capped Slimline Stone Shower Tray 900mm x 900mm', 120.83),
-    (2001205, 'Parts','Top', 'iflo Worktop Laminate 2 M x 485 x 28 mm G Grey', 99.16),
-    (2001207, 'Parts','Basin', 'Form 400 Hand Basin Unit/Odessa Oak ', 254.05),
-    (2001208, 'Parts','Basin', 'Roca 32778A000 Dama-N Compact Basin 1 Tap Hole 400mm x 320mm ', 100.72),
-    (2001209, 'Parts','Toilet', 'Roca A80178C004 Dama N Compact Soft Close Seat W ', 120.87),
-    (2001210, 'Parts','Toilet', 'IFLO CASCADA WC PACK', 170.23),
-    (2001211, 'Parts','Alarm', 'Honeywell 10 Year Battery Smoke Alarm XS100', 19.12),
-    (2001212, 'Parts','Toilet', 'Dudley Tri-Shell Low Level Cistern', 89.45),
-    (2001288, 'Materials','Sealant', '4TRADE Frame Silicone Sealant Clear', 4.15),
-    (2001289, 'Materials','Adhesives', 'Pro Flexible Grey Tile Adhesive', 13.14);
 
 insert into ADDRESS (ID, LINE1, LINE2, POSTCODE, CITY, COUNTY, COUNTRY) values
     (200, '26 Rose Court','Bromley', 'BR3 2SS', 'London', '', 'UK'),
@@ -185,30 +150,24 @@ insert into JOBSPEC (ID, ISQUOTEGENERATED, CREATED, QUOTECREATED, UPDATED, JOB_I
    (3542, true, '2017-01-12', '2017-01-12', '2017-01-12', 231),
    (4689, true, '2016-12-22', '2016-12-22', '2016-12-22', 128);
 
-insert into ITEM (ID, QUANTITY, PRODUCT_ID, JOBSPEC_ID) values
-    (300012, 2, 2001200, 7992),
-    (300013, 1, 2001255, 7992),
-    (300014, 2, 2001245, 7992),
-    (300015, 15, 2001200, 7384),
-    (300016, 1, 2001297, 7384),
-    (300017, 1, 2001298, 7384),
-    (300018, 1, 2001202, 7384),
-    (300019, 2, 2001207, 7384),
-    (300020, 2, 2001208, 7384),
-    (300021, 1, 2001209, 7384),
-    (300022, 1, 2001210, 7384),
-    (300023, 1, 2001212, 7384),
-    (300024, 1, 2001288, 7384),
-    (300025, 1, 2001289, 7384),
-    (300026, 2, 2001211, 1233),
-    (300027, 1, 2001200, 1233),
-    (300028, 7, 2001287, 3542),
-    (300029, 1, 2001200, 3542),
-    (300030, 2, 2001200, 4689),
-    (300031, 1, 2001255, 4689);
-
-
-
-
-
-
+insert into ITEM (ID, QUANTITY, JOBSPEC_ID, CATEGORY, TYPE, DESCRIPTION, PRICE) values
+    (300012, 2, 7992, 'Labour','General', 'Labour', 15.00),
+    (300013, 1, 7992, 'Parts','Sink', 'Kitchen Sink', 100),
+    (300014, 2, 7992, 'Other','Food', 'Food when working on site', 9.5),
+    (300015, 15, 7384, 'Labour','General', 'Labour', 15.00),
+    (300016, 1, 7384, 'Parts','Shower', 'Mira Excel Shower EV Valve & Kit All Chrome', 288.5),
+    (300017, 1, 7384, 'Parts','Shower', 'Novellini Cu1407011 30 Custom Shower Tray White 1400mm x 700mm', 343.45),
+    (300018, 1, 7384, 'Parts','Shower', 'iflo ABS Capped Slimline Stone Shower Tray 900mm x 900mm', 120.83),
+    (300019, 2, 7384, 'Parts','Basin', 'Form 400 Hand Basin Unit/Odessa Oak ', 254.05),
+    (300020, 2, 7384, 'Parts','Basin', 'Roca 32778A000 Dama-N Compact Basin 1 Tap Hole 400mm x 320mm ', 100.72),
+    (300021, 1, 7384, 'Parts','Toilet', 'Roca A80178C004 Dama N Compact Soft Close Seat W ', 120.87),
+    (300022, 1, 7384, 'Parts','Toilet', 'IFLO CASCADA WC PACK', 170.23),
+    (300023, 1, 7384, 'Parts','Toilet', 'Dudley Tri-Shell Low Level Cistern', 89.45),
+    (300024, 1, 7384, 'Materials','Sealant', '4TRADE Frame Silicone Sealant Clear', 4.15),
+    (300025, 1, 7384, 'Materials','Adhesives', 'Pro Flexible Grey Tile Adhesive', 13.14),
+    (300026, 2, 1233, 'Parts','Alarm', 'Honeywell 10 Year Battery Smoke Alarm XS100', 19.12),
+    (300027, 1, 1233, 'Labour','General', 'Labour', 15.00),
+    (300028, 7, 3542, 'Parts','Lighting', '4Trade Gu10 5W LED', 5.99),
+    (300029, 1, 3542, 'Labour','General', 'Labour', 15.00),
+    (300030, 2, 4689, 'Labour','General', 'Labour', 15.00),
+    (300031, 1, 4689, 'Parts','Sink', 'Kitchen Sink', 100);

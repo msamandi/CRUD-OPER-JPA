@@ -1,9 +1,9 @@
 package com.travisperkins.jobmanager.controllers;
 
+import com.travisperkins.jobmanager.model.Item;
 import com.travisperkins.jobmanager.model.Job;
-import com.travisperkins.jobmanager.model.Product;
+import com.travisperkins.jobmanager.repository.ItemRepository;
 import com.travisperkins.jobmanager.repository.JobRepository;
-import com.travisperkins.jobmanager.repository.ProductRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +20,11 @@ public class JobController {
     private JobRepository jobRepository;
 
     @Autowired
-    private ProductRepository productRepository;
+    private ItemRepository itemRepository;
 
     @RequestMapping(value = "jobs/{id}", method = RequestMethod.GET)
-    public Product getJob(@PathVariable Long id) {
-        return productRepository.findOne(id);
+    public Item getJob(@PathVariable Long id) {
+        return itemRepository.findOne(id);
     }
 
     @RequestMapping(value = "job", method = RequestMethod.POST)
