@@ -1,5 +1,6 @@
 package com.travisperkins.jobmanager.controllers;
 
+import com.travisperkins.jobmanager.model.Quote;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,15 @@ public class HelloWorldController {
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> sayHello() {
-        return new ResponseEntity("Hello world!", HttpStatus.OK);
+    public ResponseEntity<Quote> sayHello() {
+        Quote q1= new Quote("Senior", "Iban");
+
+
+        return new ResponseEntity(q1, HttpStatus.OK);
     }
+    /** test the creation of new branch integration
+
+     */
 
 
 }
