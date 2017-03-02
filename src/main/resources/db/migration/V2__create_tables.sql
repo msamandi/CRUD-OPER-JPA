@@ -83,7 +83,8 @@ CREATE TABLE IF NOT EXISTS JOBSPEC (
     QUOTECREATED DATE,
     UPDATED DATE,
     JOB_ID LONG,
-    PAYMENT_TERMS VARCHAR(1000)
+    PAYMENT_TERMS VARCHAR(1000),
+    VAT INTEGER
 );
 
 ALTER TABLE JOBSPEC
@@ -144,12 +145,12 @@ insert into JOB (ID, NAME, CONTRACTOR_ID, CLIENT_ID, CREATED) values
     (128, 'Security Check', 2505, 2504, '2016-12-05'),
     (231, 'Lighting Upgrade', 2505, 2500, '2016-10-23');
 
-insert into JOBSPEC (ID, ISQUOTEGENERATED, CREATED, QUOTECREATED, UPDATED, JOB_ID, PAYMENT_TERMS) values
-   (7992, false, '2017-02-28', '2017-02-28', '2017-02-28', 123, '20% Upfront, Rest on completion'),
-   (7384, true, '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion'),
-   (1233, false, '2017-01-08',  '2017-01-08', '2017-01-10', 231, '0% Upfront, Rest on completion'),
-   (3542, true, '2017-01-12', '2017-01-12', '2017-01-12', 231, ''),
-   (4689, true, '2016-12-22', '2016-12-22', '2016-12-22', 128, '20% Upfront, Rest on completion');
+insert into JOBSPEC (ID, ISQUOTEGENERATED, CREATED, QUOTECREATED, UPDATED, JOB_ID, PAYMENT_TERMS, VAT) values
+   (7992, false, '2017-02-28', '2017-02-28', '2017-02-28', 123, '20% Upfront, Rest on completion', 20),
+   (7384, true, '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
+   (1233, false, '2017-01-08',  '2017-01-08', '2017-01-10', 231, '0% Upfront, Rest on completion', 20),
+   (3542, true, '2017-01-12', '2017-01-12', '2017-01-12', 231, '', 20),
+   (4689, true, '2016-12-22', '2016-12-22', '2016-12-22', 128, '20% Upfront, Rest on completion', 20);
 
 insert into ITEM (ID, QUANTITY, JOBSPEC_ID, CATEGORY, TYPE, DESCRIPTION, PRICE) values
     (300012, 2, 7992, 'Labour','General', 'Labour', 15.00),
@@ -171,4 +172,17 @@ insert into ITEM (ID, QUANTITY, JOBSPEC_ID, CATEGORY, TYPE, DESCRIPTION, PRICE) 
     (300028, 7, 3542, 'Parts','Lighting', '4Trade Gu10 5W LED', 5.99),
     (300029, 1, 3542, 'Labour','General', 'Labour', 15.00),
     (300030, 2, 4689, 'Labour','General', 'Labour', 15.00),
-    (300031, 1, 4689, 'Parts','Sink', 'Kitchen Sink', 100);
+    (300031, 1, 4689, 'Parts','Sink', 'Kitchen Sink', 100),
+    (300032, 1, 7384, 'Materials','Shower', 'Grohe Rapido Shower Valve', 5.99),
+    (300033, 1, 7384, 'Materials','Shower', '4TRADE Frame Silicone Sealant Clear', 4.15),
+    (300034, 1, 7384, 'Materials','Shower', 'Pro Flexible Grey Tile Adhesive', 13.14),
+    (300035, 1, 7384, 'Parts','Shower', 'Iflo Architect + Fixed Drench Shower Head Thermostatic Bar Mixer Shower', 24.99),
+    (300036, 1, 7384, 'Parts','Shower', 'Croydex Shower Curtain Plain White', 28.99),
+    (300037, 1, 7384, 'Parts','Shower', 'iflo Rapid Secure Shower Fixing Kit', 21.66),
+    (300038, 1, 7384, 'Parts','Shower', 'iflo Shower Riser Rail Chrome 650mm', 191.14),
+    (300039, 1, 7384, 'Parts','Shower', 'Domed Chrome Shower Tray Waste 35 mm', 13.33),
+    (300040, 1, 7384, 'Labour','Shower', 'Fitting Shower', 20),
+    (300041, 1, 7384, 'Parts','Basin', 'Twyfords FC1271WH Belfast Sink White 610 x 455 x 255mm', 49.99),
+    (300042, 1, 7384, 'Materials','Basin', 'McAlpine ASC10-SP Tubular Swivel Sink Trap 38mm', 39.99),
+    (300043, 1, 7384, 'Materials','Basin', '4Trade Chrome Basin/Sink Tap Heads', 20.99),
+    (300044, 1, 7384, 'Parts','Basin', '1 1/2in Double Bowl Sink Kit SK2', 24.99);

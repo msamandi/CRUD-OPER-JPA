@@ -42,6 +42,9 @@ public class JobSpec {
     @Column(name = "PAYMENT_TERMS")
     private String paymentTerms;
 
+    @Column(name = "VAT")
+    private int vat;
+
     public Long getId() {
         return id;
     }
@@ -98,17 +101,11 @@ public class JobSpec {
         this.paymentTerms = paymentTerms;
     }
 
-    /*@Override
-    public String toString() {
-        return "JobSpec{" +
-                "id=" + id +
-                ", items=" + items +
-                ", created=" + created +
-                ", isQuoteGenerated=" + isQuoteGenerated +
-                ", quoteCreated=" + quoteCreated +
-                ", updated=" + updated +
-                ", job=" + job +
-                ", paymentTerms='" + paymentTerms + '\'' +
-                '}';
-    }*/
+    public int getVat() {
+        return vat;
+    }
+
+    public void setVat(int vat) {
+        this.vat = vat;
+    }
 }
