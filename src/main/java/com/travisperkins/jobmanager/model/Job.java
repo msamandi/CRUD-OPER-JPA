@@ -3,7 +3,6 @@ package com.travisperkins.jobmanager.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class Job {
         return jobSpecs;
     }
 
-    public void setJobSpecs(ArrayList<JobSpec> jobSpecs) {
+    public void setJobSpecs(List<JobSpec> jobSpecs) {
         this.jobSpecs = jobSpecs;
     }
 

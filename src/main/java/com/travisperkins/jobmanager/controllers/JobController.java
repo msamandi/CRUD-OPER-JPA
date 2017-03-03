@@ -52,20 +52,20 @@ public class JobController {
     }
 
     @RequestMapping(value = "job", method = RequestMethod.POST)
-    public Job create(@RequestBody Job job) {
+    public Job createJob(@RequestBody Job job) {
         if(jobRepository.findOne(job.getId()) != null) {
-            return update(job.getId(), job);
+            return updateJob(job.getId(), job);
         }
         return jobRepository.saveAndFlush(job);
     }
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
+    public void deleteJob(@PathVariable Long id) {
         jobRepository.delete(id);
     }
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.PUT)
-    public Job update(@PathVariable Long id, @RequestBody Job job) {
+    public Job updateJob(@PathVariable Long id, @RequestBody Job job) {
         Job existing = jobRepository.findOne(id);
         List<Item> newItems = job.getJobSpecs().get(0).getItems();
         BeanUtils.copyProperties(job, existing);
