@@ -18,7 +18,7 @@ import java.util.List;
  * Created by msamandi on 03/03/2017.
  */
 @Service
-public class JobServiceImp implements JobService {
+public class JobServiceImpl implements JobService {
 
     @Autowired
     private JobRepository jobRepository;
@@ -31,46 +31,49 @@ public class JobServiceImp implements JobService {
 
     @Autowired
     private UserInfoRepository userInfoRepository;
+
     @Override
-    public Job getJobService(Long id) {
+    public Job getJob(Long id) {
         return jobRepository.findOne(id);
     }
 
     @Override
-    public Item getItemService(Long id) {
+    public Item getItem(Long id) {
         return itemRepository.findOne(id);
     }
 
     @Override
-    public TPUser getTPUserService(Long id) {
+    public TPUser getTPUser(Long id) {
         return tpUserRepository.findOne(id);
     }
 
     @Override
-    public UserInfo getUserInfoService(Long id) {
+    public UserInfo getUserInfo(Long id) {
         return userInfoRepository.findOne(id);
     }
 
     @Override
-    public Job createJobService(Job job) {
-        if(jobRepository.findOne(job.getId()) != null) {
-            return updateJobService(job.getId(), job);
+    public Job createJob(Job job) {
+        if (jobRepository.findOne(job.getId()) != null) {
+            return updateJob(job.getId(), job);
         }
-        return jobRepository.saveAndFlush(job);    }
+        return jobRepository.saveAndFlush(job);
+    }
 
     @Override
-    public void deleteJobService(Long id) {
+    public void deleteJob(Long id) {
         jobRepository.delete(id);
 
     }
 
     @Override
-    public Job updateJobService(Long id,Job job) {
+    public Job updateJob(Long id, Job job) {
         Job existing = jobRepository.findOne(id);
         List<Item> newItems = job.getJobSpecs().get(0).getItems();
         BeanUtils.copyProperties(job, existing);
         existing.getJobSpecs().get(0).setItems(newItems);
-        return jobRepository.saveAndFlush(existing);     }
+        return jobRepository.saveAndFlush(existing);
+    }
 }
 
 

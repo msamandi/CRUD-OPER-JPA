@@ -41,37 +41,37 @@ public class JobController {
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.GET)
     public Job getJob(@PathVariable Long id) {
-        return jobRepository.findOne(id);
+        return jobService.getJob(id);
     }
 
     @RequestMapping(value = "item/{id}", method = RequestMethod.GET)
     public Item getItem(@PathVariable Long id) {
-        return jobService.getItemService(id);
+        return jobService.getItem(id);
     }
 
     @RequestMapping(value = "tpuser/{id}", method = RequestMethod.GET)
     public TPUser getTPUser(@PathVariable Long id) {
-        return jobService.getTPUserService(id);
+        return jobService.getTPUser(id);
     }
 
     @RequestMapping(value = "userinfo/{id}", method = RequestMethod.GET)
     public UserInfo getUserInfo(@PathVariable Long id) {
-        return jobService.getUserInfoService(id);
+        return jobService.getUserInfo(id);
     }
 
     @RequestMapping(value = "job", method = RequestMethod.POST)
     public Job createJob(@RequestBody Job job) {
-        return jobService.createJobService(job);
+        return jobService.createJob(job);
     }
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.DELETE)
     public void deleteJob(@PathVariable Long id) {
-        jobService.deleteJobService(id);
+        jobService.deleteJob(id);
     }
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.PUT)
     public Job updateJob(@PathVariable Long id, @RequestBody Job job) {
 
-        return jobService.updateJobService(id, job);
+        return jobService.updateJob(id, job);
     }
 }
