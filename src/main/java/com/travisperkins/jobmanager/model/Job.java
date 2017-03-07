@@ -18,7 +18,7 @@ public class Job {
     private Long id;
 
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<JobSpec> jobSpecs;
+    private List<Task> tasks;
 
     @Column(name = "CREATED")
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -43,12 +43,12 @@ public class Job {
         this.id = id;
     }
 
-    public List<JobSpec> getJobSpecs() {
-        return jobSpecs;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setJobSpecs(List<JobSpec> jobSpecs) {
-        this.jobSpecs = jobSpecs;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public Date getCreated() {
@@ -87,7 +87,7 @@ public class Job {
     public String toString() {
         return "Job{" +
                 "id=" + id +
-                ", jobSpecs=" + jobSpecs +
+                ", tasks=" + tasks +
                 ", created=" + created +
                 ", contractor=" + contractor +
                 ", client=" + client +

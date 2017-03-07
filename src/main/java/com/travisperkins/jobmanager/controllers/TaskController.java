@@ -1,9 +1,9 @@
 package com.travisperkins.jobmanager.controllers;
 
 import com.travisperkins.jobmanager.model.Item;
-import com.travisperkins.jobmanager.model.JobSpec;
+import com.travisperkins.jobmanager.model.Task;
 import com.travisperkins.jobmanager.repository.ItemRepository;
-import com.travisperkins.jobmanager.repository.JobSpecRepository;
+import com.travisperkins.jobmanager.repository.TaskRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,39 +17,39 @@ import java.util.Objects;
  */
 
 @RestController
-@RequestMapping("api/v1/jobspec")
-public class JobSpecController {
+@RequestMapping("api/v1/task")
+public class TaskController {
 
     @Autowired
-    private JobSpecRepository jobSpecRepository;
+    private TaskRepository taskRepository;
 
     @Autowired
     private ItemRepository itemRepository;
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public JobSpec getJobSpec(@PathVariable Long id) {
-        return jobSpecRepository.findOne(id);
+    public Task getTask(@PathVariable Long id) {
+        return taskRepository.findOne(id);
     }
 
 
     @RequestMapping(value = "{id}", method = RequestMethod.POST)
-    public JobSpec create(@PathVariable Long id, @RequestBody JobSpec jobSpec) {
-        if(jobSpecRepository.findOne(id) != null) {
-            return update(jobSpec.getId(), jobSpec);
+    public Task createTask(@PathVariable Long id, @RequestBody Task task) {
+        if(taskRepository.findOne(id) != null) {
+            return updateTask(task.getId(), task);
         }
-        return jobSpecRepository.saveAndFlush(jobSpec);
+        return taskRepository.saveAndFlush(task);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
-        jobSpecRepository.delete(id);
+    public void deleteTask(@PathVariable Long id) {
+        taskRepository.delete(id);
     }
 
     //TODO: Completely Hacked
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public JobSpec update(@PathVariable Long id, @RequestBody JobSpec jobSpec) {
-        JobSpec existing = jobSpecRepository.findOne(id);
-        List<Item> newItems = jobSpec.getItems();
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+        Task existing = taskRepository.findOne(id);
+        List<Item> newItems = task.getItems();
         List<Item> originalItems = existing.getItems();
         List<Item> newItemsWithJobSpec = new ArrayList<>();
 
@@ -66,9 +66,9 @@ public class JobSpecController {
             }
         }
 
-        jobSpec.setItems(newItemsWithJobSpec);
-        BeanUtils.copyProperties(jobSpec, existing);
-        return jobSpecRepository.saveAndFlush(existing);
+        task.setItems(newItemsWithJobSpec);
+        BeanUtils.copyProperties(task, existing);
+        return taskRepository.saveAndFlush(existing);
     }
 
     private boolean itemExists(List<Item> newItems, Item item) {

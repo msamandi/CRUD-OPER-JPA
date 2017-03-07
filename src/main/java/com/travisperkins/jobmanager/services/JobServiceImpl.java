@@ -69,9 +69,9 @@ public class JobServiceImpl implements JobService {
     @Override
     public Job updateJob(Long id, Job job) {
         Job existing = jobRepository.findOne(id);
-        List<Item> newItems = job.getJobSpecs().get(0).getItems();
+        List<Item> newItems = job.getTasks().get(0).getItems();
         BeanUtils.copyProperties(job, existing);
-        existing.getJobSpecs().get(0).setItems(newItems);
+        existing.getTasks().get(0).setItems(newItems);
         return jobRepository.saveAndFlush(existing);
     }
 }

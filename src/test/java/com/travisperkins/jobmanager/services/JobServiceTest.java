@@ -124,10 +124,10 @@ public class JobServiceTest {
     private Job setupUpdateMockData() {
         Job job = new Job();
         job.setId(TEST_ID);
-        JobSpec jobSpec = new JobSpec();
+        Task task = new Task();
         Item item = new Item();
-        jobSpec.setItems(Collections.singletonList(item));
-        job.setJobSpecs(Collections.singletonList(jobSpec));
+        task.setItems(Collections.singletonList(item));
+        job.setTasks(Collections.singletonList(task));
         when(jobRepositoryMock.findOne(anyLong())).thenReturn(job);
         when(jobRepositoryMock.saveAndFlush(isA(Job.class))).thenReturn(job);
         return job;
