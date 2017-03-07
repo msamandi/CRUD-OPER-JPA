@@ -18,8 +18,7 @@ public class Item {
     @Column(name = "CATEGORY")
     private String category;
 
-    @Column(name = "TYPE")
-    private String type;
+
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -45,7 +44,6 @@ public class Item {
         this.quantity = item.getQuantity();
         this.price = item.getPrice();
         this.category = item.getCategory();
-        this.type = item.getType();
         this.description = item.getDescription();
         this.id = item.getId();
     }
@@ -79,14 +77,6 @@ public class Item {
         this.category = category;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -116,7 +106,6 @@ public class Item {
         return "Item{" +
                 "id=" + id +
                 ", category='" + category + '\'' +
-                ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
