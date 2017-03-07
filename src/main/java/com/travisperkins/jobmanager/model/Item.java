@@ -30,8 +30,8 @@ public class Item {
     private int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "JOBSPEC_ID")
-    private JobSpec jobSpec;
+    @JoinColumn(name = "TASK_ID")
+    private Task task;
 
     public Item(Item item) {
         this.quantity = item.getQuantity();
@@ -104,7 +104,7 @@ public class Item {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
-                ", jobSpec=" + jobSpec +
+                ", task=" + task +
                 '}';
     }
 }

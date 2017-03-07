@@ -10,14 +10,17 @@ import java.util.List;
  * Created by sverma on 27/02/2017.
  */
 @Entity
-@Table(name = "JOBSPEC")
-public class JobSpec {
+@Table(name = "TASK")
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
 
-    @OneToMany(mappedBy = "jobSpec", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name = "NAME")
+    private String name;
+
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Item> items;
 
     @Column(name = "CREATED")
@@ -107,5 +110,13 @@ public class JobSpec {
 
     public void setVat(int vat) {
         this.vat = vat;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

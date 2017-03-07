@@ -1,3 +1,16 @@
+-- Drop table scripts
+
+DROP TABLE IF EXISTS `ADDRESS`;
+DROP TABLE IF EXISTS `PAYMENT_DETAILS`;
+DROP TABLE IF EXISTS `COMPANY_DETAILS`;
+DROP TABLE IF EXISTS `USERINFO`;
+DROP TABLE IF EXISTS `TPUSER`;
+DROP TABLE IF EXISTS `JOB`;
+DROP TABLE IF EXISTS `TASK`;
+DROP TABLE IF EXISTS `ITEM`;
+
+-- Create table scripts
+
 CREATE TABLE IF NOT EXISTS ADDRESS (
     ID LONG NOT NULL PRIMARY KEY,
     LINE1 VARCHAR(100),
@@ -76,8 +89,9 @@ ALTER TABLE JOB
     ADD FOREIGN KEY (CONTRACTOR_ID)
     REFERENCES public.TPUSER(ID);
 
-CREATE TABLE IF NOT EXISTS JOBSPEC (
+CREATE TABLE IF NOT EXISTS TASK (
     ID LONG NOT NULL PRIMARY KEY,
+    NAME VARCHAR(1000),
     ISQUOTEGENERATED BOOLEAN,
     CREATED DATE,
     QUOTECREATED DATE,
@@ -87,14 +101,14 @@ CREATE TABLE IF NOT EXISTS JOBSPEC (
     VAT INTEGER
 );
 
-ALTER TABLE JOBSPEC
+ALTER TABLE TASK
     ADD FOREIGN KEY (JOB_ID)
     REFERENCES public.JOB(ID);
 
 CREATE TABLE IF NOT EXISTS ITEM (
     ID LONG NOT NULL PRIMARY KEY,
     QUANTITY INTEGER,
-    JOBSPEC_ID LONG,
+    TASK_ID LONG,
     CATEGORY VARCHAR(100),
     TYPE VARCHAR(500),
     DESCRIPTION VARCHAR(1000),
@@ -102,8 +116,8 @@ CREATE TABLE IF NOT EXISTS ITEM (
 );
 
 ALTER TABLE ITEM
-ADD FOREIGN KEY (JOBSPEC_ID)
-REFERENCES public.JOBSPEC(ID);
+ADD FOREIGN KEY (TASK_ID)
+REFERENCES public.TASK(ID);
 
 insert into ADDRESS (ID, LINE1, LINE2, POSTCODE, CITY, COUNTY, COUNTRY) values
     (200, '26 Rose Court','Bromley', 'BR3 2SS', 'London', '', 'UK'),
@@ -145,14 +159,14 @@ insert into JOB (ID, NAME, CONTRACTOR_ID, CLIENT_ID, CREATED) values
     (128, 'Security Check', 2505, 2504, '2016-12-05'),
     (231, 'Lighting Upgrade', 2505, 2500, '2016-10-23');
 
-insert into JOBSPEC (ID, ISQUOTEGENERATED, CREATED, QUOTECREATED, UPDATED, JOB_ID, PAYMENT_TERMS, VAT) values
-   (7992, false, '2017-02-28', '2017-02-28', '2017-02-28', 123, '20% Upfront, Rest on completion', 20),
-   (7384, true, '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
-   (1233, false, '2017-01-08',  '2017-01-08', '2017-01-10', 231, '0% Upfront, Rest on completion', 20),
-   (3542, true, '2017-01-12', '2017-01-12', '2017-01-12', 231, '', 20),
-   (4689, true, '2016-12-22', '2016-12-22', '2016-12-22', 128, '20% Upfront, Rest on completion', 20);
+insert into TASK (ID, ISQUOTEGENERATED, NAME, CREATED, QUOTECREATED, UPDATED, JOB_ID, PAYMENT_TERMS, VAT) values
+   (7992, false, 'Task 1', '2017-02-28', '2017-02-28', '2017-02-28', 123, '20% Upfront, Rest on completion', 20),
+   (7384, true, 'Task 2', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
+   (1233, false, 'Task 3' ,'2017-01-08',  '2017-01-08', '2017-01-10', 231, '0% Upfront, Rest on completion', 20),
+   (3542, true, 'Task 4', '2017-01-12', '2017-01-12', '2017-01-12', 231, '', 20),
+   (4689, true, 'Task 5' ,'2016-12-22', '2016-12-22', '2016-12-22', 128, '20% Upfront, Rest on completion', 20);
 
-insert into ITEM (ID, QUANTITY, JOBSPEC_ID, CATEGORY, TYPE, DESCRIPTION, PRICE) values
+insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, TYPE, DESCRIPTION, PRICE) values
     (300012, 2, 7992, 'Labour','General', 'Labour', 15.00),
     (300013, 1, 7992, 'Parts','Sink', 'Kitchen Sink', 100),
     (300014, 2, 7992, 'Other','Food', 'Food when working on site', 9.5),
