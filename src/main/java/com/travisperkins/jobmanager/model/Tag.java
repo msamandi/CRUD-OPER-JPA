@@ -13,30 +13,37 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
-    @Column(name = "ITEMS")
 
+    @Column(name = "ITEMS")
     @ManyToMany(mappedBy = "tags")
-    List<Item> items ;
+    private List<Item> items;
 
     @Column(name = "NAME")
-    private String name ;
+    private String name;
 
 
     public String getName() {
         return name;
     }
 
-    /*public Long getId() {
+    public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }*/
+    }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 
 }

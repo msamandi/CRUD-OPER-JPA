@@ -1,14 +1,12 @@
 package com.travisperkins.jobmanager.controllers;
 
-import com.travisperkins.jobmanager.model.*;
-import com.travisperkins.jobmanager.repository.ItemRepository;
-import com.travisperkins.jobmanager.repository.JobRepository;
-import com.travisperkins.jobmanager.repository.TPUserRepository;
-import com.travisperkins.jobmanager.repository.UserInfoRepository;
+import com.travisperkins.jobmanager.representation.ItemRepresentation;
 import com.travisperkins.jobmanager.services.ItemService;
-import com.travisperkins.jobmanager.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -28,8 +26,8 @@ public class TagController {
     }
 
     @RequestMapping(value = "{tag}", method = RequestMethod.GET)
-    public List<Tag> getItems(@PathVariable String tag) {
-        return itemService.getTag(tag);
+    public List<ItemRepresentation> getItems(@PathVariable String tag) {
+        return itemService.getItems(tag);
     }
 
 }
