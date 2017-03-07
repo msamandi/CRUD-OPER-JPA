@@ -18,8 +18,6 @@ public class Item {
     @Column(name = "CATEGORY")
     private String category;
 
-
-
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -51,6 +49,13 @@ public class Item {
     public Item() {
     }
 
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
 
     public int getQuantity() {
         return quantity;

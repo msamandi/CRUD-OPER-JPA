@@ -215,7 +215,6 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
         (600012, 'General'),
         (600013, 'Sink'),
         (600014, 'Food'),
-        (600015, 'General'),
         (600016, 'Shower'),
         (600017, 'Toilet'),
         (600018, 'Basin'),
