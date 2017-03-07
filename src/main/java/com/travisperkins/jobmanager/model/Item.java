@@ -2,6 +2,7 @@ package com.travisperkins.jobmanager.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by sverma on 27/02/2017.
@@ -32,6 +33,13 @@ public class Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TASK_ID")
     private Task task;
+
+    @ManyToMany
+    @JoinTable(
+            name = "ITEM_TAG",
+            joinColumns = @JoinColumn(name = "ITEM_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "TAG_ID", referencedColumnName = "ID"))
+    private List<Tag> tags;
 
     public Item(Item item) {
         this.quantity = item.getQuantity();
@@ -93,6 +101,14 @@ public class Item {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     @Override

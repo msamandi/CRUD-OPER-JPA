@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS `TPUSER`;
 DROP TABLE IF EXISTS `JOB`;
 DROP TABLE IF EXISTS `TASK`;
 DROP TABLE IF EXISTS `ITEM`;
+DROP TABLE IF EXISTS `TAG`;
+DROP TABLE IF EXISTS `ITEM_TAG`;
 
 -- Create table scripts
 
@@ -109,6 +111,24 @@ CREATE TABLE IF NOT EXISTS ITEM (
         REFERENCES public.TASK(ID)
 );
 
+CREATE TABLE IF NOT EXISTS TAG (
+    ID LONG NOT NULL PRIMARY KEY,
+    NAME VARCHAR(500)
+
+);
+
+CREATE TABLE IF NOT EXISTS ITEM_TAG (
+    ID LONG NOT NULL PRIMARY KEY,
+    ITEM_ID LONG,
+    TAG_ID LONG,
+    CONSTRAINT `FK_ITEM_TAG_ITEM_ID`
+            FOREIGN KEY (ITEM_ID)
+            REFERENCES public.ITEM(ID),
+    CONSTRAINT `FK_ITEM_TAG_TAG_ID`
+                FOREIGN KEY (TAG_ID)
+                REFERENCES public.TAG(ID)
+
+);
 
 insert into ADDRESS (ID, LINE1, LINE2, POSTCODE, CITY, COUNTY, COUNTRY) values
     (200, '26 Rose Court','Bromley', 'BR3 2SS', 'London', '', 'UK'),
@@ -191,3 +211,28 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, TYPE, DESCRIPTION, PRICE) val
     (300042, 1, 7384, 'Materials','Basin', 'McAlpine ASC10-SP Tubular Swivel Sink Trap 38mm', 39.99),
     (300043, 1, 7384, 'Materials','Basin', '4Trade Chrome Basin/Sink Tap Heads', 20.99),
     (300044, 1, 7384, 'Parts','Basin', '1 1/2in Double Bowl Sink Kit SK2', 24.99);
+
+    insert into TAG (ID, NAME) values
+        (600012, 'General'),
+        (600013, 'Sink'),
+        (600014, 'Food'),
+        (600015, 'General'),
+        (600016, 'Shower'),
+        (600017, 'Toilet'),
+        (600018, 'Basin'),
+        (600019, 'Sealant'),
+        (600020, 'Adhesives'),
+        (600021, 'Alarm'),
+        (600022, 'Lighting') ;
+
+    insert into ITEM_TAG (ID, ITEM_ID, TAG_ID) values
+        (60012, 300012, 600012),
+        (60013, 300013, 600013),
+        (60014, 300031, 600013),
+        (60015, 300016, 600016),
+        (60016, 300017, 600016),
+        (60017, 300018, 600016),
+        (60018, 300015, 600012),
+        (60019, 300016, 600012);
+
+
