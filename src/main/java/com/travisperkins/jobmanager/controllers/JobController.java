@@ -44,10 +44,10 @@ public class JobController {
         return jobService.getJob(id);
     }
 
-    @RequestMapping(value = "item/{id}", method = RequestMethod.GET)
-    public Item getItem(@PathVariable Long id) {
-        return jobService.getItem(id);
-    }
+//    @RequestMapping(value = "item/{id}", method = RequestMethod.GET)
+//    public Item getItem(@PathVariable Long id) {
+//        return jobService.getItem(id);
+//    }
 
     @RequestMapping(value = "tpuser/{id}", method = RequestMethod.GET)
     public TPUser getTPUser(@PathVariable Long id) {
