@@ -149,9 +149,9 @@ insert into COMPANY_DETAILS (ID, NAME, ADDRESS_ID, VAT) values
 
 insert into USERINFO (ID, NAME, PHONE, EMAIL, ADDRESS_ID, PAYMENT_DETAILS_ID, COMPANY_DETAILS_ID) values
     (21, 'George Neutral','447561230987', 'gneutral@gmail.com', 200, NULL, NULL),
-    (1, 'John McCain','445533902100', 'johnmc@gmail.com', 201, 300, 400),
+    (1, 'David Jones','445533902100', 'djones@gmail.com', 201, 300, 400),
     (17, 'Jodie Rogers','449876899343', 'jrodgers@gmail.com', 202, NULL, NULL),
-    (23, 'Tony Plowman','448765233452', 'tplowman@gmail.com', 203, NULL, NULL),
+    (23, 'John Gray','448765233452', 'johngray@gmail.com', 203, NULL, NULL),
     (12, 'Stuart White','447564448987', 'swhite@gmail.com', 204, NULL, NULL),
     (2, 'Anthony Kaveria','447653482614', 'akaveria@gmail.com', 205, 301, 401);
 
@@ -171,16 +171,18 @@ insert into JOB (ID, NAME, CONTRACTOR_ID, CLIENT_ID, CREATED) values
 
 insert into TASK (ID, ISQUOTEGENERATED, NAME, CREATED, QUOTECREATED, UPDATED, JOB_ID, PAYMENT_TERMS, VAT) values
    (7992, false, 'Task 1', '2017-02-28', '2017-02-28', '2017-02-28', 123, '20% Upfront, Rest on completion', 20),
-   (7384, true, 'Task 2', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
+   (7384, true, 'Replace bathtub with power shower', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
+   (7385, true, 'Replace sink with two basins', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
+   (7386, true, 'Install new toilet', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
    (1233, false, 'Task 3' ,'2017-01-08',  '2017-01-08', '2017-01-10', 231, '0% Upfront, Rest on completion', 20),
    (3542, true, 'Task 4', '2017-01-12', '2017-01-12', '2017-01-12', 231, '', 20),
    (4689, true, 'Task 5' ,'2016-12-22', '2016-12-22', '2016-12-22', 128, '20% Upfront, Rest on completion', 20);
 
 insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
-    (300012, 2, null, 'Labour', 'Labour', 15.00),
+    (300012, 2, null, 'Labour', 'General Labour', 20.00),
     (300013, 1, null, 'Parts', 'Kitchen Sink', 100),
     (300014, 2, null, 'Other', 'Food when working on site', 9.5),
-    (300015, 15, null, 'Labour', 'Labour', 15.00),
+    (300015, 15, null, 'Labour', 'Specialised Labour - Gas', 25.00),
     (300016, 1, null, 'Parts','Mira Excel Shower EV Valve & Kit All Chrome', 288.5),
     (300017, 1, null, 'Parts', 'Novellini Cu1407011 30 Custom Shower Tray White 1400mm x 700mm', 343.45),
     (300018, 1, null, 'Parts','iflo ABS Capped Slimline Stone Shower Tray 900mm x 900mm', 120.83),
@@ -192,12 +194,11 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
     (300024, 1, null, 'Materials','4TRADE Frame Silicone Sealant Clear', 4.15),
     (300025, 1, null, 'Materials','Pro Flexible Grey Tile Adhesive', 13.14),
     (300026, 2, null, 'Parts','Honeywell 10 Year Battery Smoke Alarm XS100', 19.12),
-    (300027, 1, null, 'Labour','Labour', 15.00),
+    (300027, 1, null, 'Labour','Specialised Labour - Boiler', 25.00),
     (300028, 7, null, 'Parts','4Trade Gu10 5W LED', 5.99),
-    (300029, 1, null, 'Labour', 'Labour', 15.00),
-    (300030, 2, null, 'Labour','Labour', 15.00),
+    (300029, 1, null, 'Labour', 'Specialised Labour - Electricals', 25.00),
     (300031, 1, null, 'Parts','Kitchen Sink', 100),
-    (300032, 1, null, 'Materials','Grohe Rapido Shower Valve', 5.99),
+    (300032, 1, null, 'Parts','Grohe Rapido Shower Valve', 5.99),
     (300033, 1, null, 'Materials','4TRADE Frame Silicone Sealant Clear', 4.15),
     (300034, 1, null, 'Materials','Pro Flexible Grey Tile Adhesive', 13.14),
     (300035, 1, null, 'Parts','Iflo Architect + Fixed Drench Shower Head Thermostatic Bar Mixer Shower', 24.99),
@@ -205,11 +206,11 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
     (300037, 1, null, 'Parts','iflo Rapid Secure Shower Fixing Kit', 21.66),
     (300038, 1, null, 'Parts','iflo Shower Riser Rail Chrome 650mm', 191.14),
     (300039, 1, null, 'Parts', 'Domed Chrome Shower Tray Waste 35 mm', 13.33),
-    (300040, 1, null, 'Labour', 'Fitting Shower', 20),
     (300041, 1, null, 'Parts','Twyfords FC1271WH Belfast Sink White 610 x 455 x 255mm', 49.99),
-    (300042, 1, null, 'Materials','McAlpine ASC10-SP Tubular Swivel Sink Trap 38mm', 39.99),
-    (300043, 1, null, 'Materials','4Trade Chrome Basin/Sink Tap Heads', 20.99),
-    (300044, 1, null, 'Parts','1 1/2in Double Bowl Sink Kit SK2', 24.99);
+    (300042, 1, null, 'Parts','McAlpine ASC10-SP Tubular Swivel Sink Trap 38mm', 39.99),
+    (300043, 1, null, 'Parts','4Trade Chrome Basin/Sink Tap Heads', 20.99),
+    (300044, 1, null, 'Parts','1 1/2in Double Bowl Sink Kit SK2', 24.99),
+    (300046, 2, null, 'Materials', 'Plumbers Gold Sealant & Adhesive 290ml', 6.41);
 
     insert into TAG (ID, NAME) values
         (600012, 'General'),
@@ -245,7 +246,6 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
         (60029, 300027, 600012),
         (60030, 300028, 600022),
         (60031, 300029, 600012),
-        (60032, 300030, 600012),
         (60033, 300031, 600013),
         (60034, 300032, 600016),
         (60035, 300033, 600016),
@@ -255,7 +255,7 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
         (60039, 300037, 600016),
         (60040, 300038, 600016),
         (60041, 300039, 600016),
-        (60042, 300040, 600016),
+        (60042, 300012, 600016),
         (60043, 300041, 600018),
         (60044, 300042, 600018),
         (60045, 300043, 600018),
@@ -267,7 +267,15 @@ insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
         (60051, 300020, 600023),
         (60052, 300021, 600023),
         (60053, 300022, 600023),
-        (60054, 300023, 600023);
+        (60054, 300023, 600023),
+        (60056, 300033, 600018),
+        (60057, 300046, 600018),
+        (60058, 300012, 600018),
+        (60059, 300046, 600016),
+        (60060, 300029, 600016),
+        (60061, 300012, 600017),
+        (60062, 300033, 600017),
+        (60063, 300046, 600017);
 
 
 
