@@ -3,7 +3,6 @@ package com.travisperkins.jobmanager.representation;
 import com.travisperkins.jobmanager.model.Task;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * Created by sverma on 27/02/2017.
@@ -22,8 +21,6 @@ public class ItemRepresentation {
 
     private Task task;
 
-    private List<TagRepresentation> tags;
-
     public ItemRepresentation(ItemRepresentationBuilder itemRepresentationBuilder) {
         this.id = itemRepresentationBuilder.id;
         this.quantity = itemRepresentationBuilder.quantity;
@@ -31,7 +28,6 @@ public class ItemRepresentation {
         this.category = itemRepresentationBuilder.category;
         this.description = itemRepresentationBuilder.description;
         this.task = itemRepresentationBuilder.task;
-        this.tags = itemRepresentationBuilder.tags;
     }
 
     public ItemRepresentation() {
@@ -79,14 +75,6 @@ public class ItemRepresentation {
         this.price = price;
     }
 
-    public List<TagRepresentation> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<TagRepresentation> tags) {
-        this.tags = tags;
-    }
-
     @Override
     public String toString() {
         return "Item{" +
@@ -111,8 +99,6 @@ public class ItemRepresentation {
         private int quantity;
 
         private Task task;
-
-        private List<TagRepresentation> tags;
 
         public ItemRepresentationBuilder(Long id) {
             this.id = id;
@@ -140,11 +126,6 @@ public class ItemRepresentation {
 
         public ItemRepresentationBuilder task(Task task) {
             this.task = task;
-            return this;
-        }
-
-        public ItemRepresentationBuilder tags(List<TagRepresentation> tags) {
-            this.tags = tags;
             return this;
         }
 
