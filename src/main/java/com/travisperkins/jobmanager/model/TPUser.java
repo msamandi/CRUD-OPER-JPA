@@ -43,4 +43,22 @@ public class TPUser {
                 ", userInfo=" + userInfo +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TPUser tpUser = (TPUser) o;
+
+        if (id != null ? !id.equals(tpUser.id) : tpUser.id != null) return false;
+        return userInfo != null ? userInfo.equals(tpUser.userInfo) : tpUser.userInfo == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userInfo != null ? userInfo.hashCode() : 0);
+        return result;
+    }
 }

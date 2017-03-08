@@ -1,8 +1,7 @@
 package com.travisperkins.jobmanager.controllers;
 
-import com.travisperkins.jobmanager.model.Job;
-import com.travisperkins.jobmanager.model.TPUser;
-import com.travisperkins.jobmanager.model.UserInfo;
+import com.travisperkins.jobmanager.model.*;
+import com.travisperkins.jobmanager.representation.JobRepresentation;
 import com.travisperkins.jobmanager.services.JobService;
 import org.junit.After;
 import org.junit.Before;
@@ -43,14 +42,15 @@ public class JobControllerTest {
 
     @Test
     public void testGetJob() {
-        final Job job = new Job();
-        //setup behaviour
-        when(jobServiceMock.getJob(anyLong())).thenReturn(job);
+        final JobRepresentation jobRepresentation = new JobRepresentation();
 
-        Job returned = jobController.getJob(TEST_ID);
+        //setup behaviour
+        when(jobServiceMock.getJob(anyLong())).thenReturn(jobRepresentation);
+
+        JobRepresentation returned = jobController.getJob(TEST_ID);
 
         verify(jobServiceMock).getJob(TEST_ID);
-        assertEquals(returned, job);
+        assertEquals(returned, jobRepresentation);
     }
 
     @Test

@@ -63,4 +63,27 @@ public class PaymentDetails {
                 ", accountHolderName='" + accountHolderName + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PaymentDetails that = (PaymentDetails) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (sortCode != null ? !sortCode.equals(that.sortCode) : that.sortCode != null) return false;
+        if (accountNumber != null ? !accountNumber.equals(that.accountNumber) : that.accountNumber != null)
+            return false;
+        return accountHolderName != null ? accountHolderName.equals(that.accountHolderName) : that.accountHolderName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (sortCode != null ? sortCode.hashCode() : 0);
+        result = 31 * result + (accountNumber != null ? accountNumber.hashCode() : 0);
+        result = 31 * result + (accountHolderName != null ? accountHolderName.hashCode() : 0);
+        return result;
+    }
 }

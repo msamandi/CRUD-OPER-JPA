@@ -8,6 +8,7 @@ import com.travisperkins.jobmanager.repository.ItemRepository;
 import com.travisperkins.jobmanager.repository.JobRepository;
 import com.travisperkins.jobmanager.repository.TPUserRepository;
 import com.travisperkins.jobmanager.repository.UserInfoRepository;
+import com.travisperkins.jobmanager.representation.JobRepresentation;
 import com.travisperkins.jobmanager.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class JobController {
     }
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.GET)
-    public Job getJob(@PathVariable Long id) {
+    public JobRepresentation getJob(@PathVariable Long id) {
         return jobService.getJob(id);
     }
 

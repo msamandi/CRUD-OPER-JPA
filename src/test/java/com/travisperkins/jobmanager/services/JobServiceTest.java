@@ -5,6 +5,8 @@ import com.travisperkins.jobmanager.repository.ItemRepository;
 import com.travisperkins.jobmanager.repository.JobRepository;
 import com.travisperkins.jobmanager.repository.TPUserRepository;
 import com.travisperkins.jobmanager.repository.UserInfoRepository;
+import com.travisperkins.jobmanager.representation.JobRepresentation;
+import com.travisperkins.jobmanager.representation.TaskRepresentation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +15,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyLong;
@@ -56,13 +60,39 @@ public class JobServiceTest {
     @Test
     public void testGetJob() {
         final Job job = new Job();
+        final String name = "job_name";
+        final String paymentTerms = "50% upfront";
+        final int vat = 20;
+        final TPContractor tpContractor = new TPContractor();
+        final TPClient tpClient = new TPClient();
+        final List<Task> taskList = new ArrayList<>();
+        final List<TaskRepresentation> taskRepresentationList = new ArrayList<>();
+
+        job.setId(TEST_ID);
+        job.setName(name);
+        job.setPaymentTerms(paymentTerms);
+        job.setClient(tpClient);
+        job.setContractor(tpContractor);
+        job.setVat(vat);
+        job.setTasks(taskList);
+
+        final JobRepresentation jobRepresentation = new JobRepresentation
+                .JobRepresentationBuilder(TEST_ID)
+                .client(tpClient)
+                .contractor(tpContractor)
+                .name(name)
+                .paymentTerms(paymentTerms)
+                .vat(vat)
+                .tasks(taskRepresentationList)
+                .build();
+
         //setup behaviour
         when(jobRepositoryMock.findOne(anyLong())).thenReturn(job);
 
-        Job returned = jobService.getJob(TEST_ID);
+        JobRepresentation returned = jobService.getJob(TEST_ID);
 
         verify(jobRepositoryMock).findOne(TEST_ID);
-        assertEquals(returned, job);
+        assertEquals(returned, jobRepresentation);
     }
 
     @Test
