@@ -21,6 +21,13 @@ public class Tag {
     @Column(name = "NAME")
     private String name;
 
+    public Tag(String name) {
+        this.name = name;
+    }
+
+    public Tag() {
+    }
+
 
     public String getName() {
         return name;
@@ -46,4 +53,23 @@ public class Tag {
         this.items = items;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tag tag = (Tag) o;
+
+        if (id != null ? !id.equals(tag.id) : tag.id != null) return false;
+        if (items != null ? !items.equals(tag.items) : tag.items != null) return false;
+        return name != null ? name.equals(tag.name) : tag.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (items != null ? items.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

@@ -53,17 +53,6 @@ public class JobControllerTest {
         assertEquals(returned, job);
     }
 
-//    @Test
-//    public void testGetItem() {
-//        final Item item = new Item();
-//        when(jobServiceMock.getItem(anyLong())).thenReturn(item);
-//
-//        Item returned = jobController.getItem(TEST_ID);
-//
-//        verify(jobServiceMock).getItem(TEST_ID);
-//        assertEquals(returned, item);
-//    }
-
     @Test
     public void testTPUser() {
         final TPUser tpUser = new TPUser();

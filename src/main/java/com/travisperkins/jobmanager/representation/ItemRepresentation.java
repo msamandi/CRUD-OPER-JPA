@@ -87,6 +87,32 @@ public class ItemRepresentation {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ItemRepresentation that = (ItemRepresentation) o;
+
+        if (quantity != that.quantity) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (category != null ? !category.equals(that.category) : that.category != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (price != null ? !price.equals(that.price) : that.price != null) return false;
+        return task != null ? task.equals(that.task) : that.task == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + quantity;
+        result = 31 * result + (task != null ? task.hashCode() : 0);
+        return result;
+    }
+
     public static class ItemRepresentationBuilder {
         private Long id;
 
@@ -122,7 +148,7 @@ public class ItemRepresentation {
         public ItemRepresentationBuilder quantity(int quantity) {
             this.quantity = quantity;
             return this;
-        }
+    }
 
         public ItemRepresentationBuilder task(Task task) {
             this.task = task;

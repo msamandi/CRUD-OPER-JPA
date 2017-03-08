@@ -117,4 +117,32 @@ public class Item {
                 ", task=" + task +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        if (quantity != item.quantity) return false;
+        if (id != null ? !id.equals(item.id) : item.id != null) return false;
+        if (category != null ? !category.equals(item.category) : item.category != null) return false;
+        if (description != null ? !description.equals(item.description) : item.description != null) return false;
+        if (price != null ? !price.equals(item.price) : item.price != null) return false;
+        if (task != null ? !task.equals(item.task) : item.task != null) return false;
+        return tags != null ? tags.equals(item.tags) : item.tags == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + quantity;
+        result = 31 * result + (task != null ? task.hashCode() : 0);
+        result = 31 * result + (tags != null ? tags.hashCode() : 0);
+        return result;
+    }
 }

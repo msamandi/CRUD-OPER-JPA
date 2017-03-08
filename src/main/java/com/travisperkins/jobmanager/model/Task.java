@@ -119,4 +119,38 @@ public class Task {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (isQuoteGenerated != task.isQuoteGenerated) return false;
+        if (vat != task.vat) return false;
+        if (id != null ? !id.equals(task.id) : task.id != null) return false;
+        if (name != null ? !name.equals(task.name) : task.name != null) return false;
+        if (items != null ? !items.equals(task.items) : task.items != null) return false;
+        if (created != null ? !created.equals(task.created) : task.created != null) return false;
+        if (quoteCreated != null ? !quoteCreated.equals(task.quoteCreated) : task.quoteCreated != null) return false;
+        if (updated != null ? !updated.equals(task.updated) : task.updated != null) return false;
+        if (job != null ? !job.equals(task.job) : task.job != null) return false;
+        return paymentTerms != null ? paymentTerms.equals(task.paymentTerms) : task.paymentTerms == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (items != null ? items.hashCode() : 0);
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        result = 31 * result + (isQuoteGenerated ? 1 : 0);
+        result = 31 * result + (quoteCreated != null ? quoteCreated.hashCode() : 0);
+        result = 31 * result + (updated != null ? updated.hashCode() : 0);
+        result = 31 * result + (job != null ? job.hashCode() : 0);
+        result = 31 * result + (paymentTerms != null ? paymentTerms.hashCode() : 0);
+        result = 31 * result + vat;
+        return result;
+    }
 }
