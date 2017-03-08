@@ -27,26 +27,9 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @Autowired
-    private JobRepository jobRepository;
-
-    @Autowired
-    private ItemRepository itemRepository;
-
-    @Autowired
-    private TPUserRepository tpUserRepository;
-
-    @Autowired
-    private UserInfoRepository userInfoRepository;
-
     @RequestMapping(value = "job/{id}", method = RequestMethod.GET)
     public Job getJob(@PathVariable Long id) {
         return jobService.getJob(id);
-    }
-
-    @RequestMapping(value = "item/{id}", method = RequestMethod.GET)
-    public Item getItem(@PathVariable Long id) {
-        return jobService.getItem(id);
     }
 
     @RequestMapping(value = "tpuser/{id}", method = RequestMethod.GET)

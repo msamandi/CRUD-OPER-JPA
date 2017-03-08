@@ -1,6 +1,5 @@
 package com.travisperkins.jobmanager.controllers;
 
-import com.travisperkins.jobmanager.model.Item;
 import com.travisperkins.jobmanager.model.Job;
 import com.travisperkins.jobmanager.model.TPUser;
 import com.travisperkins.jobmanager.model.UserInfo;
@@ -52,17 +51,6 @@ public class JobControllerTest {
 
         verify(jobServiceMock).getJob(TEST_ID);
         assertEquals(returned, job);
-    }
-
-    @Test
-    public void testGetItem() {
-        final Item item = new Item();
-        when(jobServiceMock.getItem(anyLong())).thenReturn(item);
-
-        Item returned = jobController.getItem(TEST_ID);
-
-        verify(jobServiceMock).getItem(TEST_ID);
-        assertEquals(returned, item);
     }
 
     @Test
