@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/item")
-public class TagController {
+public class ItemController {
 
     private ItemService itemService;
 
