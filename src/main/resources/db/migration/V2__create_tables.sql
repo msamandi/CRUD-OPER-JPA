@@ -36,10 +36,7 @@ CREATE TABLE IF NOT EXISTS COMPANY_DETAILS (
     VAT VARCHAR(50),
     ADDRESS_ID LONG,
     CONSTRAINT `FK_COMPANY_DETAILS_ADDRESS_ID` FOREIGN KEY (ADDRESS_ID) REFERENCES public.ADDRESS(ID)
-
 );
-
-
 
 CREATE TABLE IF NOT EXISTS USERINFO (
     ID LONG NOT NULL PRIMARY KEY,
@@ -52,22 +49,14 @@ CREATE TABLE IF NOT EXISTS USERINFO (
     CONSTRAINT `FK_USERINFO_ADDRESS` FOREIGN KEY (ADDRESS_ID) REFERENCES public.ADDRESS(ID),
     CONSTRAINT `FK_USERINFO_PAYMENT_DETAILS_ID` FOREIGN KEY (PAYMENT_DETAILS_ID) REFERENCES public.PAYMENT_DETAILS(ID),
     CONSTRAINT `FK_USERINFO_COMPANY_DETAILS_ID` FOREIGN KEY (COMPANY_DETAILS_ID) REFERENCES public.COMPANY_DETAILS(ID)
-
-
 );
-
-
-
 
 CREATE TABLE IF NOT EXISTS TPUSER (
     ID LONG NOT NULL PRIMARY KEY,
     TYPE VARCHAR(50),
     USERINFO_ID LONG,
     CONSTRAINT `FK_TPUSER_USERINFO_ID` FOREIGN KEY (USERINFO_ID)  REFERENCES public.USERINFO(ID)
-
 );
-
-
 
 CREATE TABLE IF NOT EXISTS JOB (
     ID LONG NOT NULL PRIMARY KEY,
@@ -75,28 +64,22 @@ CREATE TABLE IF NOT EXISTS JOB (
     CONTRACTOR_ID LONG,
     CLIENT_ID LONG,
     CREATED DATE ,
+    PAYMENT_TERMS VARCHAR(1000),
+    VAT INTEGER,
     CONSTRAINT `FK_JOB_CLIENT_ID` FOREIGN KEY (CLIENT_ID) REFERENCES public.TPUSER(ID),
     CONSTRAINT `FK_JOB_CONTRACTOR_ID` FOREIGN KEY (CONTRACTOR_ID) REFERENCES public.TPUSER(ID)
 );
 
-
-
 CREATE TABLE IF NOT EXISTS TASK (
     ID LONG NOT NULL PRIMARY KEY,
     NAME VARCHAR(1000),
-    ISQUOTEGENERATED BOOLEAN,
     CREATED DATE,
-    QUOTECREATED DATE,
     UPDATED DATE,
     JOB_ID LONG,
-    PAYMENT_TERMS VARCHAR(1000),
-    VAT INTEGER,
     CONSTRAINT `FK_TASK_JOB_ID`
             FOREIGN KEY (JOB_ID)
                 REFERENCES public.JOB(ID)
 );
-
-
 
 CREATE TABLE IF NOT EXISTS ITEM (
     ID LONG NOT NULL PRIMARY KEY,
@@ -163,20 +146,20 @@ insert into TPUSER (ID, TYPE, USERINFO_ID) values
     (2501, 'TPContractor', 1),
     (2505, 'TPContractor', 2);
 
-insert into JOB (ID, NAME, CONTRACTOR_ID, CLIENT_ID, CREATED) values
-    (123, 'Kitchen Fitting', 2501, 2502, '2017-02-13'),
-    (439, 'Bathroom Refurbishment', 2501, 2503, '2017-01-07'),
-    (128, 'Security Check', 2505, 2504, '2016-12-05'),
-    (231, 'Lighting Upgrade', 2505, 2500, '2016-10-23');
+insert into JOB (ID, NAME, CONTRACTOR_ID, CLIENT_ID, CREATED, PAYMENT_TERMS, VAT) values
+    (123, 'Kitchen Fitting', 2501, 2502, '2017-02-13', '20% Upfront, Rest on completion', 20),
+    (439, 'Bathroom Refurbishment', 2501, 2503, '2017-01-07', '50% Upfront, Rest on completion', 20),
+    (128, 'Security Check', 2505, 2504, '2016-12-05', '20% Upfront, Rest on completion', 20),
+    (231, 'Lighting Upgrade', 2505, 2500, '2016-10-23', '0% Upfront, Rest on completion', 20);
 
-insert into TASK (ID, ISQUOTEGENERATED, NAME, CREATED, QUOTECREATED, UPDATED, JOB_ID, PAYMENT_TERMS, VAT) values
-   (7992, false, 'Task 1', '2017-02-28', '2017-02-28', '2017-02-28', 123, '20% Upfront, Rest on completion', 20),
-   (7384, true, 'Replace bathtub with power shower', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
-   (7385, true, 'Replace sink with two basins', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
-   (7386, true, 'Install new toilet', '2017-02-10', '2017-02-11', '2017-02-11', 439, '50% Upfront, Rest on completion', 20),
-   (1233, false, 'Task 3' ,'2017-01-08',  '2017-01-08', '2017-01-10', 231, '0% Upfront, Rest on completion', 20),
-   (3542, true, 'Task 4', '2017-01-12', '2017-01-12', '2017-01-12', 231, '', 20),
-   (4689, true, 'Task 5' ,'2016-12-22', '2016-12-22', '2016-12-22', 128, '20% Upfront, Rest on completion', 20);
+insert into TASK (ID, NAME, CREATED, UPDATED, JOB_ID) values
+   (7992, 'Task 1', '2017-02-28', '2017-02-28', 123),
+   (7384, 'Replace bathtub with power shower', '2017-02-10', '2017-02-11', 439),
+   (7385, 'Replace sink with two basins', '2017-02-10', '2017-02-11', 439),
+   (7386, 'Install new toilet', '2017-02-10', '2017-02-11', 439),
+   (1233, 'Task 3' ,'2017-01-08',  '2017-01-10', 231),
+   (3542, 'Task 4', '2017-01-12', '2017-01-12', 231),
+   (4689, 'Task 5' ,'2016-12-22', '2016-12-22', 128);
 
 insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
     (300012, 2, null, 'Labour', 'General Labour', 20.00),

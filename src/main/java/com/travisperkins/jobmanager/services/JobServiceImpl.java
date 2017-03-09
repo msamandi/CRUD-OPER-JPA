@@ -1,17 +1,17 @@
 package com.travisperkins.jobmanager.services;
 
-import com.travisperkins.jobmanager.model.Item;
-import com.travisperkins.jobmanager.model.Job;
-import com.travisperkins.jobmanager.model.TPUser;
-import com.travisperkins.jobmanager.model.UserInfo;
+import com.travisperkins.jobmanager.model.*;
 import com.travisperkins.jobmanager.repository.ItemRepository;
 import com.travisperkins.jobmanager.repository.JobRepository;
 import com.travisperkins.jobmanager.repository.TPUserRepository;
 import com.travisperkins.jobmanager.repository.UserInfoRepository;
+import com.travisperkins.jobmanager.representation.JobRepresentation;
+import com.travisperkins.jobmanager.representation.TaskRepresentation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,8 +33,10 @@ public class JobServiceImpl implements JobService {
     private UserInfoRepository userInfoRepository;
 
     @Override
-    public Job getJob(Long id) {
-        return jobRepository.findOne(id);
+    public JobRepresentation getJob(Long id) {
+        Job job = jobRepository.findOne(id);
+
+        return mapToJobRepresentation(job);
     }
 
     @Override
@@ -74,6 +76,37 @@ public class JobServiceImpl implements JobService {
         existing.getTasks().get(0).setItems(newItems);
         return jobRepository.saveAndFlush(existing);
     }
+
+    private JobRepresentation mapToJobRepresentation(Job job) {
+        return new JobRepresentation.JobRepresentationBuilder(job.getId())
+                .client(job.getClient())
+                .contractor(job.getContractor())
+                .created(job.getCreated())
+                .name(job.getName())
+                .paymentTerms(job.getPaymentTerms())
+                .vat(job.getVat())
+                .tasks(mapToTaskRepresentation(job.getTasks()))
+                .build();
+    }
+
+    private List<TaskRepresentation> mapToTaskRepresentation(List<Task> tasks) {
+        List<TaskRepresentation> taskRepresentations = new ArrayList<>();
+        if(tasks == null) {
+            return null;
+        }
+        for(Task task: tasks) {
+            TaskRepresentation taskRepresentation = new TaskRepresentation
+                    .TaskRepresentationBuilder(task.getId())
+                    .created(task.getCreated())
+                    .updated(task.getUpdated())
+                    .name(task.getName())
+                    .job(task.getJob())
+                    .build();
+            taskRepresentations.add(taskRepresentation);
+        }
+        return taskRepresentations;
+    }
+
 }
 
 

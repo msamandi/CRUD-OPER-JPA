@@ -4,13 +4,14 @@ import com.travisperkins.jobmanager.model.Item;
 import com.travisperkins.jobmanager.model.Job;
 import com.travisperkins.jobmanager.model.TPUser;
 import com.travisperkins.jobmanager.model.UserInfo;
+import com.travisperkins.jobmanager.representation.JobRepresentation;
 
 /**
  * Created by msamandi on 03/03/2017.
  */
 public interface JobService {
 
-     Job getJob(Long id) ;
+     JobRepresentation getJob(Long id) ;
 
      Item getItem(Long id) ;
 
