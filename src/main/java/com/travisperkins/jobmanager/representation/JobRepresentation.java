@@ -26,7 +26,7 @@ public class JobRepresentation {
 
     private String paymentTerms;
 
-    private int vat;
+    private int vatRate;
 
     public JobRepresentation(JobRepresentationBuilder jobRepresentationBuilder) {
         this.id = jobRepresentationBuilder.id;
@@ -36,7 +36,7 @@ public class JobRepresentation {
         this.contractor = jobRepresentationBuilder.contractor;
         this.client = jobRepresentationBuilder.client;
         this.paymentTerms = jobRepresentationBuilder.paymentTerms;
-        this.vat = jobRepresentationBuilder.vat;
+        this.vatRate = jobRepresentationBuilder.vatRate;
     }
 
     public JobRepresentation() {
@@ -98,27 +98,14 @@ public class JobRepresentation {
         this.paymentTerms = paymentTerms;
     }
 
-    public int getVat() {
-        return vat;
+    public int getVatRate() {
+        return vatRate;
     }
 
-    public void setVat(int vat) {
-        this.vat = vat;
+    public void setVatRate(int vatRate) {
+        this.vatRate = vatRate;
     }
 
-    @Override
-    public String toString() {
-        return "Job{" +
-                "id=" + id +
-                ", tasks=" + tasks +
-                ", created=" + created +
-                ", contractor=" + contractor +
-                ", client=" + client +
-                ", name='" + name + '\'' +
-                ", paymentTerms='" + paymentTerms + '\'' +
-                ", vat=" + vat +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -127,7 +114,7 @@ public class JobRepresentation {
 
         JobRepresentation that = (JobRepresentation) o;
 
-        if (vat != that.vat) return false;
+        if (vatRate != that.vatRate) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (tasks != null ? !tasks.equals(that.tasks) : that.tasks != null) return false;
         if (created != null ? !created.equals(that.created) : that.created != null) return false;
@@ -146,9 +133,25 @@ public class JobRepresentation {
         result = 31 * result + (client != null ? client.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (paymentTerms != null ? paymentTerms.hashCode() : 0);
-        result = 31 * result + vat;
+        result = 31 * result + vatRate;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "JobRepresentation{" +
+                "id=" + id +
+                ", tasks=" + tasks +
+                ", created=" + created +
+                ", contractor=" + contractor +
+
+                ", client=" + client +
+                ", name='" + name + '\'' +
+                ", paymentTerms='" + paymentTerms + '\'' +
+                ", vatRate=" + vatRate +
+                '}';
+    }
+
 
     public static class JobRepresentationBuilder {
         private Long id;
@@ -165,7 +168,7 @@ public class JobRepresentation {
 
         private String paymentTerms;
 
-        private int vat;
+        private int vatRate;
 
         public JobRepresentationBuilder(Long id) {
             this.id = id;
@@ -201,8 +204,8 @@ public class JobRepresentation {
             return this;
         }
 
-        public JobRepresentation.JobRepresentationBuilder vat(int vat) {
-            this.vat = vat;
+        public JobRepresentation.JobRepresentationBuilder vat(int vatRate) {
+            this.vatRate = vatRate;
             return this;
         }
 

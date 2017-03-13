@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("api/v1")
 public class JobController {
 
