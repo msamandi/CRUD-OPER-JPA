@@ -17,6 +17,7 @@ import java.util.Objects;
  */
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("api/v1/task")
 public class TaskController {
 

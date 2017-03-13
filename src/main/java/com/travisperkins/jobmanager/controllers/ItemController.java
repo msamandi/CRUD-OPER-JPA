@@ -3,10 +3,7 @@ package com.travisperkins.jobmanager.controllers;
 import com.travisperkins.jobmanager.representation.ItemRepresentation;
 import com.travisperkins.jobmanager.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +12,7 @@ import java.util.List;
  */
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("api/v1/item")
 public class ItemController {
 
