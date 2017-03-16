@@ -17,7 +17,7 @@ import java.util.Objects;
  */
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://tp-job-manager-dev.andapps.co.uk/")
 @RequestMapping("api/v1/task")
 public class TaskController {
 

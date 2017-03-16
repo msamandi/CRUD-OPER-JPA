@@ -1,13 +1,8 @@
 package com.travisperkins.jobmanager.controllers;
 
-import com.travisperkins.jobmanager.model.Item;
 import com.travisperkins.jobmanager.model.Job;
 import com.travisperkins.jobmanager.model.TPUser;
 import com.travisperkins.jobmanager.model.UserInfo;
-import com.travisperkins.jobmanager.repository.ItemRepository;
-import com.travisperkins.jobmanager.repository.JobRepository;
-import com.travisperkins.jobmanager.repository.TPUserRepository;
-import com.travisperkins.jobmanager.repository.UserInfoRepository;
 import com.travisperkins.jobmanager.representation.JobRepresentation;
 import com.travisperkins.jobmanager.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://tp-job-manager-dev.andapps.co.uk/")
 @RequestMapping("api/v1")
 public class JobController {
 
