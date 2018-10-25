@@ -51,7 +51,6 @@ public class JobController {
 
     @RequestMapping(value = "job/{id}", method = RequestMethod.PUT)
     public Job updateJob(@PathVariable Long id, @RequestBody Job job) {
-
         return jobService.updateJob(id, job);
     }
 }

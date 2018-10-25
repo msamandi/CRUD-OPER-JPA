@@ -1,5 +1,7 @@
 package com.travisperkins.jobmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +28,7 @@ public class Task {
 
     @Column(name = "UPDATED")
     private Date updated;
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "JOB_ID")
     private Job job;

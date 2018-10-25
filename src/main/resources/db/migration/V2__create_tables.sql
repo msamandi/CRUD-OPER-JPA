@@ -162,8 +162,8 @@ insert into TASK (ID, NAME, CREATED, UPDATED, JOB_ID) values
    (4689, 'Task 5' ,'2016-12-22', '2016-12-22', 128);
 
 insert into ITEM (ID, QUANTITY, TASK_ID, CATEGORY, DESCRIPTION, PRICE) values
-    (300012, 2, null, 'Labour', 'General Labour', 20.00),
-    (300013, 1, null, 'Parts', 'Kitchen Sink', 100),
+    (300012, 2, 7992, 'Labour', 'General Labour', 20.00),
+    (300013, 1, 7992, 'Parts', 'Kitchen Sink', 100),
     (300014, 2, null, 'Other', 'Food when working on site', 9.5),
     (300015, 15, null, 'Labour', 'Specialised Labour - Gas', 25.00),
     (300016, 1, null, 'Parts','Mira Excel Shower EV Valve & Kit All Chrome', 288.5),

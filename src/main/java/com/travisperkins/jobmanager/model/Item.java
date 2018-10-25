@@ -1,5 +1,7 @@
 package com.travisperkins.jobmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,11 +28,12 @@ public class Item {
 
     @Column(name = "QUANTITY")
     private int quantity;
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TASK_ID")
     private Task task;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "ITEM_TAG",

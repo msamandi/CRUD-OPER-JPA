@@ -19,7 +19,7 @@ public class HelloWorldController {
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Quote> sayHello() {
-        Quote q1= new Quote("Senior", "Iban");
+        Quote q1= new Quote("Senior", "Med");
 
 
         return new ResponseEntity(q1, HttpStatus.OK);

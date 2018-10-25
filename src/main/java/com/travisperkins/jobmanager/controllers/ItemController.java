@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @RestController
-@CrossOrigin(origins = "http://tp-job-manager-dev.andapps.co.uk:8081/")
+//@CrossOrigin(origins = "http://tp-job-manager-dev.andapps.co.uk:8081/")
 @RequestMapping("api/v1/item")
 public class ItemController {
 

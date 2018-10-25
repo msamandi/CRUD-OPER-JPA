@@ -67,6 +67,10 @@ public class ItemServiceTest {
             items.add(item);
         }
         tag.setItems(items);
+        List<Tag>tags = new ArrayList<Tag>();
+        tags.add(tag);
+
+
         //setup behaviour
         List<ItemRepresentation> listItem=new ArrayList<ItemRepresentation>();
         for(long i=1; i<=count; i++){

@@ -22,7 +22,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<ItemRepresentation> getItems(String tagName) {
         Tag tag = tagRepository.getTag(tagName);
-        List<Item> items = tag.getItems();
+        List<Item> items ;
+        if (tag!=null)
+            items = tag.getItems();
+        else
+
+             items = new ArrayList<Item>();
 
         return mapToItemRepresentation(items);
     }

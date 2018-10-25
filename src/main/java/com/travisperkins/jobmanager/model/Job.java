@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by sverma on 27/02/2017.
+ * Created by msamandi on 27/02/2017.
  */
 @Entity
 @Table(name = "JOB")

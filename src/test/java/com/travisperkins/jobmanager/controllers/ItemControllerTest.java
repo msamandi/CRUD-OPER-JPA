@@ -46,7 +46,7 @@ public class ItemControllerTest {
         verifyNoMoreInteractions(itemServiceMock);
     }
     @Test
-    public void testGetJob() {
+    public void testGetItems() {
         List<ItemRepresentation> listItem=new ArrayList<ItemRepresentation>();
         //setup behaviour
         when(itemServiceMock.getItems(anyString())).thenReturn(listItem);
