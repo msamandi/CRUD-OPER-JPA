@@ -35,11 +35,7 @@ node {
              }
         }
 
-        stage ('Notify Slack SUCCESS') {
-           withCredentials([[$class: 'StringBinding', credentialsId: 'ci-slack-url', variable: 'SLACK_URL']]) {
-               sh "curl -XPOST -d 'payload={ \"color\": \"good\", \"text\": \":white_check_mark: Build succeeded for ${env.JOB_NAME} ${env.BRANCH_NAME}\" }' ${env.SLACK_URL}"
-            }
-        }
+        
     } catch (error) {
         stage ('Notify Slack FAIL') {
             withCredentials([[$class: 'StringBinding', credentialsId: 'ci-slack-url', variable: 'SLACK_URL']]) {
