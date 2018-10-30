@@ -20,7 +20,7 @@ node {
         docker.image("maven:3.3.9-jdk-8-alpine").inside() {
             stage ('Build job-manager-api code') {
 
-                /bin/sh 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
 
@@ -35,7 +35,7 @@ node {
              }
         }
 
-        
+
     } catch (error) {
         stage ('Notify Slack FAIL') {
             withCredentials([[$class: 'StringBinding', credentialsId: 'ci-slack-url', variable: 'SLACK_URL']]) {
