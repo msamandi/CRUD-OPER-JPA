@@ -9,6 +9,6 @@ ADD target/jobmanager-api-1.0.jar ./
 ADD src/main/resources/application.properties ./
 ADD database/jobmanagerAPI.mv.db ./jobmanagerAPI.mv.db
 
-EXPOSE 8080
+EXPOSE 8081
 
 CMD java -jar jobmanager-api-1.0.jar
