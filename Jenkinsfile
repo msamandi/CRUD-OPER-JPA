@@ -2,7 +2,7 @@ node {
      stage('Check out code'){
        checkout scm
        echo "My branch is: ${env.BRANCH_NAME}"
-       echo "Build number ${env.BUILD_NUMBER}"
+       echo "Build number   "${BRANCH_NAME}"
 
        }
     stage ('Clear workspace') {
