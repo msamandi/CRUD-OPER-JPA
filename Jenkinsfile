@@ -59,6 +59,7 @@ node {
              }
              }
         }
+        }
 
 
     } catch (error) {
