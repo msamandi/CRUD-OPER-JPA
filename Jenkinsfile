@@ -1,12 +1,10 @@
-
 pipeline {
   environment {
     registry = "msamandi/job-manager-api"
     registryCredential = 'dockerhub'
   }
-  agent any
 
-}
+
 node {
      stage('Check out code'){
        checkout scm
@@ -71,4 +69,5 @@ node {
 
         throw error
     }
+}
 }
