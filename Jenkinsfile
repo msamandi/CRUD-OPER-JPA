@@ -1,3 +1,12 @@
+
+pipeline {
+  environment {
+    registry = "msamandi/job-manager-api"
+    registryCredential = 'dockerhub'
+  }
+  agent any
+
+}
 node {
      stage('Check out code'){
        checkout scm
@@ -27,10 +36,27 @@ node {
             api_app = docker.build("${api_image_name}", '.')
         }
 
+         stage('Publish') {
+
+
+
+            steps{
+                script {
+                  docker.withRegistry( ‘’, registryCredential ) {
+                    dockerImage.push()
+                  }
+                }
+              }
+              }
+
         if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
             stage ('Push API') {
+             withDockerServer([uri: "tcp://<my-docker-socket>"]) {
+                  withDockerRegistry([credentialsId: 'docker-registry-credentials', url: "https://<my-docker-registry>/"]) {
+
                 api_app.push()
                 api_app.push("${env.BRANCH_NAME}-latest")
+             }
              }
         }
 
