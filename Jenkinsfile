@@ -31,15 +31,16 @@ node {
 
          stage('Publish') {
 
-               withDockerServer([uri: "tcp://<my-docker-socket>"]) {
                  withDockerRegistry([credentialsId: 'dockerhub', url: msamandi/job-manager-api]) {
                    api_app.push()
-                          echo "push image to docker Hub ..."
+                   api_app.push("${env.BRANCH_NAME}-latest")
+
+                  echo "push image to docker Hub ..."
                  }
-               }
+
               }
 
-        if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'mastecr') {
+        if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
             stage ('Push API') {
              withDockerServer([uri: "tcp://<my-docker-socket>"]) {
                   withDockerRegistry([credentialsId: 'dockerhub', url: "https://<my-docker-registry>/"]) {
