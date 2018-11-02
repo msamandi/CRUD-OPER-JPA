@@ -32,7 +32,7 @@ node {
          stage('Publish') {
 
                withDockerServer([uri: "tcp://<my-docker-socket>"]) {
-                 withDockerRegistry([credentialsId: 'dockerhub', url: "https://<my-docker-registry>/"]) {
+                 withDockerRegistry([credentialsId: 'dockerhub', url: msamandi/job-manager-api]) {
                    api_app.push()
                  }
                }
