@@ -31,29 +31,29 @@ node {
 
          stage('Publish') {
 
+               withDockerServer([uri: "tcp://<my-docker-socket>"]) {
                  withDockerRegistry([credentialsId: 'dockerhub', url: msamandi/job-manager-api]) {
                    api_app.push()
-                   api_app.push("${env.BRANCH_NAME}-latest")
-
                    echo "push image to docker Hub ..."
                  }
-
+               }
 
 
               }
 
         if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
             stage ('Push API') {
-             api_app.push()
-             api_app.push("${env.BRANCH_NAME}-latest")
+     api_app.push()
+               api_app.push("${env.BRANCH_NAME}-latest")
+                      }
              }
-        }
+
 
 
 
     } catch (error) {
         stage ('Notify Slack FAIL') {
-            withCrdentials([[$class: 'StringBinding', credentialsId: 'ci-slack-url', variable: 'SLACK_URL']]) {
+            withCredentials([[$class: 'StringBinding', credentialsId: 'ci-slack-url', variable: 'SLACK_URL']]) {
                 sh "curl -XPOST -d 'payload={ \"color\": \"danger\", \"text\": \":warning: Build failed for ${env.JOB_NAME} ${env.BRANCH_NAME}: $error (see <${env.BUILD_URL}|the build logs>)\" }' ${env.SLACK_URL}"
             }
         }
