@@ -1,8 +1,3 @@
-pipeline {
-  environment {
-    registry = "msamandi/job-manager-api"
-    registryCredential = 'dockerhub'
-  }
 
 
 node {
@@ -22,7 +17,7 @@ node {
     try {
         def api_image_name = "msamandi/job-manager-api:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         def api_app
-
+x
         docker.image("maven:3.3.9-jdk-8-alpine").inside() {
             stage ('Build job-manager-api code') {
 
@@ -36,15 +31,11 @@ node {
 
          stage('Publish') {
 
-
-
-            steps{
-                script {
-                  docker.withRegistry( ‘’, registryCredential ) {
-                    dockerImage.push()
-                  }
-                }
-              }
+               withDockerServer([uri: "tcp://<my-docker-socket>"]) {
+                 withDockerRegistry([credentialsId: 'dockerhub', url: "https://<my-docker-registry>/"]) {
+                   api_app.push()
+                 }
+               }
               }
 
         if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
@@ -57,7 +48,6 @@ node {
              }
              }
         }
-        }
 
 
     } catch (error) {
@@ -69,5 +59,4 @@ node {
 
         throw error
     }
-}
 }
