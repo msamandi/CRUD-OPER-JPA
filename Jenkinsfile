@@ -34,6 +34,7 @@ node {
                withDockerServer([uri: "tcp://<my-docker-socket>"]) {
                  withDockerRegistry([credentialsId: 'dockerhub', url: msamandi/job-manager-api]) {
                    api_app.push()
+                          echo "push image to docker Hub ..."
                  }
                }
               }
