@@ -17,7 +17,7 @@ node {
     try {
         def api_image_name = "msamandi/job-manager-api:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         def api_app
-x
+
         docker.image("maven:3.3.9-jdk-8-alpine").inside() {
             stage ('Build job-manager-api code') {
 
@@ -41,7 +41,7 @@ x
         if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'mastecr') {
             stage ('Push API') {
              withDockerServer([uri: "tcp://<my-docker-socket>"]) {
-                  withDockerRegistry([credentialsId: 'docker-registry-credentials', url: "https://<my-docker-registry>/"]) {
+                  withDockerRegistry([credentialsId: 'dockerhub', url: "https://<my-docker-registry>/"]) {
 
                 api_app.push()
                 api_app.push("${env.BRANCH_NAME}-latest")
