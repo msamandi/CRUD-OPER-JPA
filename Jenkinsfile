@@ -35,19 +35,20 @@ node {
                    api_app.push()
                    api_app.push("${env.BRANCH_NAME}-latest")
 
-                  echo "push image to docker Hub ..."
+                   echo "push image to docker Hub ..."
                  }
+
+               api_app.push()
+               api_app.push("${env.BRANCH_NAME}-latest")
+
 
               }
 
         if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
             stage ('Push API') {
-             withDockerServer([uri: "tcp://<my-docker-socket>"]) {
-                  withDockerRegistry([credentialsId: 'dockerhub', url: "https://<my-docker-registry>/"]) {
-
-                api_app.push()
-                api_app.push("${env.BRANCH_NAME}-latest")
-             }
+             docker.withRegistry( ‘https://hub.docker.com’, dockerhub ) {
+             api_app.push()
+                      }
              }
         }
         }
