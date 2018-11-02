@@ -38,7 +38,7 @@ x
                }
               }
 
-        if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
+        if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'mastecr') {
             stage ('Push API') {
              withDockerServer([uri: "tcp://<my-docker-socket>"]) {
                   withDockerRegistry([credentialsId: 'docker-registry-credentials', url: "https://<my-docker-registry>/"]) {
@@ -47,6 +47,7 @@ x
                 api_app.push("${env.BRANCH_NAME}-latest")
              }
              }
+        }
         }
 
 
