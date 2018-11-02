@@ -38,17 +38,14 @@ node {
                    echo "push image to docker Hub ..."
                  }
 
-               api_app.push()
-               api_app.push("${env.BRANCH_NAME}-latest")
 
 
               }
 
         if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master') {
             stage ('Push API') {
-             docker.withRegistry( ‘https://hub.docker.com’, dockerhub ) {
              api_app.push()
-                      }
+             api_app.push("${env.BRANCH_NAME}-latest")
              }
         }
 
